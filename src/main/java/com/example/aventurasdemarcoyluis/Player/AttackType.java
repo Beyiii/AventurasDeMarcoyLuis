@@ -1,10 +1,18 @@
-package com.example.aventurasdemarcoyluis;
+package com.example.aventurasdemarcoyluis.Player;
 
 /**
- * Enumerator that represents de type of attack that a
- * player can choose
- *
+ * Clase para representar los tipos de ataques que hay.
  */
 public enum AttackType {
-    MARTILLO,SALTO
+    SALTO(1), MARTILLO(1.5);
+
+    private double k;
+
+    private AttackType(double k) {
+        this.k = k;
+    }
+
+    public double getK() {
+        return k;
+    }
 }

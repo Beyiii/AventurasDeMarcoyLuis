@@ -1,6 +1,6 @@
 package com.example.aventurasdemarcoyluis;
 
-import java.util.Objects;
+import com.example.aventurasdemarcoyluis.Enemy.EnemyType;
 
 public class Enemies {
     private int atk;

@@ -1,8 +1,8 @@
 package com.example.aventurasdemarcoyluis.Items;
 
 /**
- * Enumerator that represents the items explain in the project
+ * Clase para representar los tipos de items que hay.
  */
-public enum Items {
-    STAR, RefreshingHerb, RedMushroom, HoneySyrup
+public enum ItemsType {
+    STAR,REDMUSHROOM,HONEYSYRUP
 }

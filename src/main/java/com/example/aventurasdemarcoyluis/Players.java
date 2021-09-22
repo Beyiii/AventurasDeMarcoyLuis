@@ -1,6 +1,8 @@
 package com.example.aventurasdemarcoyluis;
 
 
+import com.example.aventurasdemarcoyluis.Items.ItemsType;
+
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ public class Players {
     private int hp;
     private int fp;
     private int lvl=1;
-    public List<Items> armamento;
+    public List<ItemsType> armamento;
 
     /**
      * Creates a new player
@@ -34,7 +36,7 @@ public class Players {
     }
 
 
-    public void addAItem(Items a){
+    public void addAItem(ItemsType a){
         armamento.add(a);
     }
 

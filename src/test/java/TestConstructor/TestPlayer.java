@@ -1,28 +1,35 @@
-package TestConstructorAndProtection;
+package TestConstructor;
 
+import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestPlayer {
-    //Creo los personajes
+    private Marco marco;
+    private Luis luis;
 
     @BeforeEach
-    public void setUp() {
-        //Se inicializan los los personajes
-    }
-    @Test
-    public void constructorTest(){
-        //Que el tipo de personaje sea: Marco o Luis
-
-        //otras cosas del constructor
+    public void setUp(){
+        marco = new Marco(10,5,5,4,4);
+        luis = new Luis(15,6, 4, 6,6);
     }
 
+    /**
+     * Test para asegurarse que sean del tipo correspondiente
+     */
+
     @Test
-    public void protectionTest(){
-        //Que no se pueda settear ningun dato del personaje (hp, lvl, ...)
+    public void typeTest(){
+        assertEquals(PlayerType.MARCO, marco.getType());
+        assertEquals(PlayerType.LUIS, luis.getType());
     }
+
+    /** Mas test para el constructor que no se me ocurren en este momento (Buscar en internet)*/
+
+    /** Buscar test para mostrar la protección de algunas variables uwu */
+
 }
+

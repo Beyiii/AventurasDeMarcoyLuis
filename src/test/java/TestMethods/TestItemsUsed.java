@@ -1,48 +1,110 @@
 package TestMethods;
 
+import com.example.aventurasdemarcoyluis.Enemy.*;
+import com.example.aventurasdemarcoyluis.Items.*;
+import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TestItemsUsed {
-    //Creo los enemigos
-    //Creo los personajes
+    private Goomba goomba;
+
+    private Marco marco;
+    private Luis luis;
+
+    private Star star;
+    private RedMushroom redMushroom;
+    private HoneySyrup honeySyrup;
 
     @BeforeEach
     public void setUp() {
-        //Se inicializan los enemigos
-        //Se inicializan los personajes
+        goomba = new Goomba(8,4,15,8);
+
+        marco = new Marco(10,5,5,16,4);
+        luis = new Luis(15,6, 4, 18,6);
+
+        goomba.attack(marco);
+        goomba.attack(luis);
+
+        star = new Star();
+        redMushroom = new RedMushroom();
+        honeySyrup = new HoneySyrup();
     }
+
     @Test
     public void marcoUseStarTest(){
-        //Que Marco pueda ocupar el item star
+        String estadoMarco = marco.getEstado();
+        marco.addItems(star);
+        marco.useStar();
+        String estadoExpected = "invencible";
+        String estadoResult = marco.getEstado();
+
+        assertNotEquals(estadoMarco, estadoResult);
+        assertEquals(estadoExpected, estadoResult);
+
     }
 
     @Test
     public void marcoUseRedMushroomTest(){
-        //Que Marco pueda ocupar el item red mushroom
+        int hpMarco = marco.getHp();
+        marco.addItems(redMushroom);
+        marco.useRedMushroom();
+        int hpExpected = hpMarco + (10 * 16/100);
+        int hpResult = marco.getHp();
+
+        assertNotEquals(hpMarco, hpResult);
+        assertEquals(hpExpected, hpResult);
     }
 
     @Test
     public void marcoUseHoneySyrupTest(){
-        //Que Marco pueda ocupar el item honey syrup
+        int fpMarco = marco.getFp();
+        marco.addItems(honeySyrup);
+        marco.useHoneySyrup();
+        int fpExpected = fpMarco + 3;
+        int fpResult = marco.getFp();
+
+        assertNotEquals(fpMarco, fpResult);
+        assertEquals(fpExpected, fpResult);
     }
 
     @Test
     public void luisUseStarTest(){
-        //Que Luis pueda ocupar el item star
+        String estadoLuis = luis.getEstado();
+        luis.addItems(star);
+        luis.useStar();
+        String estadoExpected = "invencible";
+        String estadoResult = luis.getEstado();
+
+        assertNotEquals(estadoLuis, estadoResult);
+        assertEquals(estadoExpected, estadoResult);
     }
 
     @Test
     public void luisUseRedMushroomTest(){
-        //Que Luis pueda ocupar el item red mushroom
+        int hpLuis = luis.getHp();
+        luis.addItems(redMushroom);
+        luis.useRedMushroom();
+        int hpExpected = (int)(hpLuis + (10 * 18/100));
+        int hpResult = luis.getHp();
+
+        assertNotEquals(hpLuis, hpResult);
+        assertEquals(hpExpected, hpResult);
     }
 
     @Test
     public void luisUseHoneySyrupTest(){
-        //Que Luis pueda ocupar el item honey syrup
+        int fpLuis = luis.getFp();
+        luis.addItems(honeySyrup);
+        luis.useHoneySyrup();
+        int fpExpected = fpLuis + 3;
+        int fpResult = luis.getFp();
+
+        assertNotEquals(fpLuis, fpResult);
+        assertEquals(fpExpected, fpResult);
     }
 }
