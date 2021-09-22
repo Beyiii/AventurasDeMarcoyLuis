@@ -1,4 +1,4 @@
-package Test
+package TestConstructorAndProtection;
 
 import com.example.aventurasdemarcoyluis.Enemies;
 import com.example.aventurasdemarcoyluis.EnemyType;
