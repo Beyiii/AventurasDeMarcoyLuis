@@ -28,11 +28,18 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy 
         this.type = TYPE;
     }
 
-    /** GET AND SETTERS */
+    /**
+     * Obtiene la constante k de los enemigos.
+     * @return la constante k.
+     */
     public double getK() {
         return k;
     }
 
+    /**
+     * Obtiene el tipo de enemigo que es (GOOMBA, SPINY O BOO).
+     * @return el tipo de enemigo.
+     */
     public EnemyType getType() {
         return type;
     }

@@ -27,47 +27,51 @@ public class Marco extends AbstractPlayer {
      */
     @Override
     public void saltoAttack(IEnemy enemy){
-        if (this.KO() == false) { // NO ESTÁ DERROTADO, PUEDE ATACAR
+        if (!this.KO()) { // NO ESTÁ DERROTADO, PUEDE ATACAR
             int newFp = isFpMin(this.getFp() - 1);
             this.setFp(newFp);
             enemy.reciveAttackMarcoSalto(this);
-        }
-        else{ //ESTÁ DERROTADO, NO HACE NADA
         }
     }
 
     /**
      * Permite que Marco pueda atacar con martillo a sus enemigos.
      * Si el jugador está fuera de combate no puede atacar.
+     * Tiene un 25% de probabilidades de fallar.
      * @param enemy personaje enemigo.
      */
     @Override
     public void martilloAttack(IEnemy enemy) {
         int r = probabilidadMartillo(25);
-        if (this.KO() == false && r == 1){
+        if (!this.KO() && r == 1){
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
             enemy.reciveAttackMarcoMartillo(this);
         }
-        if (this.KO() == false && r != 1){
+        if (!this.KO() && r != 1){
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
         }
-        else {}
     }
 
+    /**
+     * Permite que Marco pueda atacar con martillo a sus enemigos.
+     * Si el jugador está fuera de combate no puede atacar.
+     * Existe una probabilidad de fallar.
+     * @param enemy personaje enemigo.
+     * @param probabilidadDeFallo Porcentaje (0-100) de que el ataque falle.
+     */
     public void martilloAttack(IEnemy enemy, int probabilidadDeFallo) {
         int r = probabilidadMartillo(probabilidadDeFallo);
-        if (this.KO() == false && r == 1){
+        if (!this.KO() && r == 1){
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
             enemy.reciveAttackMarcoMartillo(this);
         }
-        if (this.KO() == false && r != 1) {
+        if (!this.KO() && r != 1) {
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
         }
-        else {}
     }
 
     @Override

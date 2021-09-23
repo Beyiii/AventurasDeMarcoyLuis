@@ -42,31 +42,59 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     }
 
 
-    /** GET AND SETTERS */
+    /**
+     * Obtiene los puntos para poder atacar.
+     * @return los puntos para poder atacar.
+     */
     public int getFp() {
         return fp;
     }
 
+    /**
+     * Cambia el valor del fp.
+     * @param fp el nuevo valor de fp.
+     */
     public void setFp(int fp) {
         this.fp = fp;
     }
 
+    /**
+     * Obtiene el valor de fp maximo.
+     * @return el valor de fp maximo.
+     */
     public int getFpMax() {
         return fpMax;
     }
 
+    /**
+     * Obtiene el valor de fp maximo.
+     * @return el valor de fp minimo.
+     */
     public int getFpMin() {
         return fpMin;
     }
 
+    /**
+     * Obtiene el estado en el que se encuentra el personaje.
+     * Los estados son "Vencible" e "Invencible".
+     * @return el estado del personaje.
+     */
     public String getEstado() {
         return estado;
     }
 
+    /**
+     * Cambia elo estado en que se encuentra el jugador.
+     * @param estado el nuevo estado.
+     */
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
+    /**
+     * Obtiene el tipo de jugador (Marco o Luis).
+     * @return tipo del jugador.
+     */
     public PlayerType getType() {
         return type;
     }
