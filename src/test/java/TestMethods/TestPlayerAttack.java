@@ -24,12 +24,11 @@ public class TestPlayerAttack  {
     public void setUp() {
         goomba = new Goomba(2,4,15,8);
         spiny = new Spiny(3,10,15,8);
-        boo = new Boo(8,3,12,5);
+        boo = new Boo(8,3,15,5);
 
-        marco = new Marco(10,5,5,4,4);
-        luis = new Luis(11,6, 4, 6,6);
+        marco = new Marco(10,5,5,20,4);
+        luis = new Luis(5,6, 4, 20,6);
     }
-
     /**Que Marco ataque a goomba con salto (lo puede dañar)
      * Que Marco ataque a goomba con martillo (lo puede dañar)
      * Que el daño sea igual al indicado en la formula del enunciado
@@ -41,7 +40,7 @@ public class TestPlayerAttack  {
 
         marco.saltoAttack(goomba);
 
-        int hpExpected = (int)(15 - (kSalto * 10 * 4/4));
+        int hpExpected = 15 - (kSalto * 10 * 4/4);
         int hpResult = goomba.getHp();
 
         int fpExpected = 5 - 1;
@@ -61,7 +60,7 @@ public class TestPlayerAttack  {
 
         marco.martilloAttack(goomba, 0);
 
-        int hpExpected = (int)(15 - (kMartillo * 10 * 4/4));
+        int hpExpected = 15 - (int)(kMartillo * 10 * 4/4);
         int hpResult = goomba.getHp();
 
         int fpExpected = 5 - 2;
@@ -83,7 +82,7 @@ public class TestPlayerAttack  {
 
         marco.saltoAttack(spiny);
 
-        int hpExpectedMarco = (int)(4 - (4 * 5/100));
+        int hpExpectedMarco = 20 - (int)(20 * 5/100);
         int hpResultSpiny = spiny.getHp();
         int hpResultMarco = marco.getHp();
 
@@ -106,7 +105,7 @@ public class TestPlayerAttack  {
 
         marco.martilloAttack(spiny, 0);
 
-        int hpExpected = (int)(15 - (kMartillo * 10 * 4/10));
+        int hpExpected = 15 - (int)(kMartillo * 10 * 4/10);
         int hpResult = spiny.getHp();
 
         int fpExpected = 5 - 2;
@@ -125,7 +124,7 @@ public class TestPlayerAttack  {
 
         marco.saltoAttack(boo);
 
-        int hpExpected = (int)(12 - (kSalto * 10 * 4/3));
+        int hpExpected = 15 - (int)(kSalto * 10 * 4/3);
         int hpResult = boo.getHp();
 
         int fpExpected = 5 - 1;
@@ -147,7 +146,7 @@ public class TestPlayerAttack  {
 
         int hpResult = boo.getHp();
 
-        int fpExpected = 5 - 1;
+        int fpExpected = 5 - 2;
         int fpResult = marco.getFp();
 
         assertEquals(hpBoo, hpResult); // boo esquiva el martillo
@@ -163,7 +162,7 @@ public class TestPlayerAttack  {
 
         luis.saltoAttack(goomba);
 
-        int hpExpected = (int)(15 - (kSalto * 11 * 6/4));
+        int hpExpected = 15 - (int)(kSalto * 5 * 6/4);
         int hpResult = goomba.getHp();
 
         int fpExpected = 4 - 1;
@@ -183,7 +182,7 @@ public class TestPlayerAttack  {
 
         luis.martilloAttack(goomba,0);
 
-        int hpExpected = (int)(15 - (kMartillo * 11 * 6/4));
+        int hpExpected = 15 - (int)(kMartillo * 5 * 6/4);
         int hpResult = goomba.getHp();
 
         int fpExpected = 4 - 2;
@@ -204,7 +203,7 @@ public class TestPlayerAttack  {
 
         luis.saltoAttack(spiny);
 
-        int hpExpectedLuis = (int)(6 - (6 * 5/100));
+        int hpExpectedLuis = (int)(20 - (20 * 5/100));
         int hpResultSpiny = spiny.getHp();
         int hpResultLuis = luis.getHp();
 
@@ -227,7 +226,7 @@ public class TestPlayerAttack  {
 
         luis.martilloAttack(spiny,0);
 
-        int hpExpected = (int)(15 - (kMartillo * 11 * 6/10));
+        int hpExpected = 15 - (int)(kMartillo * 5 * 6/10);
         int hpResult = spiny.getHp();
 
         int fpExpected = 4 - 2;

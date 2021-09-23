@@ -17,4 +17,19 @@ public class RedMushroom implements Items{
     public ItemsType getType() {
         return type;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof RedMushroom) {
+            RedMushroom other = (RedMushroom) obj;
+            return ( this.getType() == other.getType());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return ItemsType.REDMUSHROOM.hashCode();
+    }
 }

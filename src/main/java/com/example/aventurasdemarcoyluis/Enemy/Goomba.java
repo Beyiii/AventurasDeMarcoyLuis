@@ -70,4 +70,24 @@ public class Goomba extends AbstractEnemy {
     public void reciveAttackluisMartillo(Luis luis) {
         takeDamage(luis, AttackType.MARTILLO);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Goomba) {
+            Goomba other = (Goomba) obj;
+            return ( this.getAtk()== other.getAtk())
+                    && (this.getDef() == other.getDef())
+                    && (this.getHpMAX() == other.getHpMAX())
+                    && (this.getHpMin() == other.getHpMin())
+                    && (this.getLvl() == other.getLvl())
+                    && (this.getType() == other.getType());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return EnemyType.GOOMBA.hashCode();
+    }
 }

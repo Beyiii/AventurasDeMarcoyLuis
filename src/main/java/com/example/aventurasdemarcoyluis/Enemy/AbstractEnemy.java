@@ -41,7 +41,7 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy 
     public void takeDamage(AbstractPlayer player, AttackType attackType){
         int vida = this.getHp();
         double k = attackType.getK();
-        int daño = (int)(k * player.getAtk() * (player.getLvl()/this.getDef()));
+        int daño = (int)(k * player.getAtk() * player.getLvl()/this.getDef());
         int newHp = isHpMin(vida-daño);
         this.setHp(newHp);
     }

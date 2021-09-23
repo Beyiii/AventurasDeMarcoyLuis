@@ -35,7 +35,7 @@ public class TestEnemyAttack {
     public void goombaAttackMarcoTest(){
         int hpMarco = marco.getHp();
         goomba.attack(marco);
-        int hpExpected = (int)(4 - (0.75 * 2 * 8/5));
+        int hpExpected = (4 - (int)(0.75 * 2 * 8/5));
         int hpResult = marco.getHp();
 
         assertNotEquals(hpMarco, hpResult);
@@ -46,7 +46,7 @@ public class TestEnemyAttack {
     public void spinyAttackMarcoTest(){
         int hpMarco = marco.getHp();
         spiny.attack(marco);
-        int hpExpected = (int)(4 - (0.75 * 3 * 8/5));
+        int hpExpected = (4 - (int)(0.75 * 3 * 8/5));
         int hpResult = marco.getHp();
 
         assertNotEquals(hpMarco, hpResult);
@@ -66,7 +66,7 @@ public class TestEnemyAttack {
     public void goombaAttackLuisTest(){
         int hpLuis = luis.getHp();
         goomba.attack(luis);
-        int hpExpected = (int)(6 - (0.75 * 2 * 8/6));
+        int hpExpected = (6 - (int)(0.75 * 2 * 8/6));
         int hpResult = luis.getHp();
 
         assertNotEquals(hpLuis, hpResult);
@@ -77,7 +77,7 @@ public class TestEnemyAttack {
     public void spinyAttackLuisTest(){
         int hpLuis = luis.getHp();
         spiny.attack(luis);
-        int hpExpected = (int)(6 - (0.75 * 3 * 8/6));
+        int hpExpected = (6 - (int)(0.75 * 3 * 8/6));
         int hpResult = luis.getHp();
 
         assertNotEquals(hpLuis, hpResult);
@@ -88,7 +88,7 @@ public class TestEnemyAttack {
     public void booAttackLuisTest(){
         int hpLuis = luis.getHp();
         boo.attack(luis);
-        int hpExpected = (int)(6 - (0.75 * 8 * 5/6));
+        int hpExpected = (6 - (int)(0.75 * 8 * 5/6));
         int hpResult = luis.getHp();
 
         assertNotEquals(hpLuis, hpResult);

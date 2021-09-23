@@ -49,6 +49,10 @@ public class Marco extends AbstractPlayer {
             this.setFp(newFp);
             enemy.reciveAttackMarcoMartillo(this);
         }
+        if (this.KO() == false && r != 1){
+            int newFp = isFpMin(this.getFp() - 2);
+            this.setFp(newFp);
+        }
         else {}
     }
 
@@ -59,6 +63,32 @@ public class Marco extends AbstractPlayer {
             this.setFp(newFp);
             enemy.reciveAttackMarcoMartillo(this);
         }
+        if (this.KO() == false && r != 1) {
+            int newFp = isFpMin(this.getFp() - 2);
+            this.setFp(newFp);
+        }
         else {}
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Marco) {
+            Marco other = (Marco) obj;
+            return ( this.getAtk()== other.getAtk())
+                    && (this.getDef() == other.getDef())
+                    && (this.getHpMAX() == other.getHpMAX())
+                    && (this.getHpMin() == other.getHpMin())
+                    && (this.getFpMax() == other.getFpMax())
+                    && (this.getFpMin() == other.getFpMin())
+                    && (this.getLvl() == other.getLvl())
+                    && (this.getType() == other.getType());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return PlayerType.MARCO.hashCode();
     }
 }

@@ -53,7 +53,7 @@ public class TestItemsUsed {
         int hpMarco = marco.getHp();
         marco.addItems(redMushroom);
         marco.useRedMushroom();
-        int hpExpected = hpMarco + (10 * 16/100);
+        int hpExpected = hpMarco + (int)(10 * 16/100);
         int hpResult = marco.getHp();
 
         assertNotEquals(hpMarco, hpResult);
@@ -63,12 +63,20 @@ public class TestItemsUsed {
     @Test
     public void marcoUseHoneySyrupTest(){
         int fpMarco = marco.getFp();
+
+        marco.martilloAttack(goomba); // -2 fp
+        marco.martilloAttack(goomba); // -2 fp
+
+        int fpAfterAttack = marco.getFp();
+
         marco.addItems(honeySyrup);
         marco.useHoneySyrup();
-        int fpExpected = fpMarco + 3;
+
+        int fpExpected = fpAfterAttack + 3;
         int fpResult = marco.getFp();
 
         assertNotEquals(fpMarco, fpResult);
+        assertNotEquals(fpMarco, fpAfterAttack);
         assertEquals(fpExpected, fpResult);
     }
 
@@ -99,12 +107,20 @@ public class TestItemsUsed {
     @Test
     public void luisUseHoneySyrupTest(){
         int fpLuis = luis.getFp();
+
+        luis.martilloAttack(goomba); // -2 fp
+        luis.martilloAttack(goomba); // -2 fp
+
+        int fpAfterAttack = luis.getFp();
+
         luis.addItems(honeySyrup);
         luis.useHoneySyrup();
-        int fpExpected = fpLuis + 3;
+
+        int fpExpected = fpAfterAttack + 3;
         int fpResult = luis.getFp();
 
         assertNotEquals(fpLuis, fpResult);
+        assertNotEquals(fpLuis, fpAfterAttack);
         assertEquals(fpExpected, fpResult);
     }
 }

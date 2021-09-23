@@ -48,6 +48,10 @@ public class Luis extends AbstractPlayer {
             this.setFp(newFp);
             enemy.reciveAttackluisMartillo(this);
         }
+        if (this.KO() == false && r != 1){
+            int newFp = isFpMin(this.getFp() - 2);
+            this.setFp(newFp);
+        }
         else{}
     }
 
@@ -57,6 +61,10 @@ public class Luis extends AbstractPlayer {
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
             enemy.reciveAttackluisMartillo(this);
+        }
+        if (this.KO() == false && r != 1){
+            int newFp = isFpMin(this.getFp() - 2);
+            this.setFp(newFp);
         }
         else {}
     }
@@ -68,5 +76,27 @@ public class Luis extends AbstractPlayer {
     @Override
     public void reciveAttackBoo(Boo boo) {
         takeDamage(boo);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Luis) {
+            Luis other = (Luis) obj;
+            return ( this.getAtk()== other.getAtk())
+                    && (this.getDef() == other.getDef())
+                    && (this.getHpMAX() == other.getHpMAX())
+                    && (this.getHpMin() == other.getHpMin())
+                    && (this.getFpMax() == other.getFpMax())
+                    && (this.getFpMin() == other.getFpMin())
+                    && (this.getLvl() == other.getLvl())
+                    && (this.getType() == other.getType());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return PlayerType.LUIS.hashCode();
     }
 }

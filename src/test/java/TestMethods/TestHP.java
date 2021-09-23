@@ -36,7 +36,7 @@ public class TestHP {
         int hpMarco = marco.getHp();
         marco.addItems(redMushroom);
         marco.useRedMushroom(); //Marco ya está en el maximo de su hp
-        int noRestriction = hpMarco + (10 * 16/100 );
+        int noRestriction = hpMarco + (int)(10 * 16/100 );
         int hpResult = marco.getHp();
 
         assertNotEquals(noRestriction, hpResult);
@@ -45,13 +45,13 @@ public class TestHP {
 
     @Test
     public void marcoMinHpTest(){
-        int hpMarco = marco.getHp();
         goomba.attack(marco);
-        int noRestriction = (int)(16 - (0.75 * 1000 * 8/5 ));
+        int noRestriction = 16 - (int)(0.75 * 1000 * 8/5 );
+        int hpExpected = marco.getHpMin(); //hp minimo = 0
         int hpResult = marco.getHp();
 
         assertNotEquals(noRestriction, hpResult);
-        assertEquals(hpMarco, hpResult);
+        assertEquals(hpExpected, hpResult);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestHP {
         int hpLuis = luis.getHp();
         luis.addItems(redMushroom);
         luis.useRedMushroom(); //Luis ya está en el maximo de su hp
-        int noRestriction = hpLuis + (10 * 18/100 );
+        int noRestriction = hpLuis + (int)(10 * 18/100 );
         int hpResult = luis.getHp();
 
         assertNotEquals(noRestriction, hpResult);
@@ -68,12 +68,12 @@ public class TestHP {
 
     @Test
     public void luisMinHpTest(){
-        int hpLuis = luis.getHp();
         goomba.attack(luis);
-        int noRestriction = (int)(18 - (0.75 * 1000 * 8/6 ));
+        int noRestriction = 18 - (int)(0.75 * 1000 * 8/6 );
+        int hpExpected = luis.getHpMin(); //hp minimo = 0
         int hpResult = luis.getHp();
 
         assertNotEquals(noRestriction, hpResult);
-        assertEquals(hpLuis, hpResult);
+        assertEquals(hpExpected, hpResult);
     }
 }

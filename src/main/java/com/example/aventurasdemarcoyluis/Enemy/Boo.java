@@ -40,4 +40,24 @@ public class Boo extends AbstractEnemy{
     public void reciveAttackMarcoSalto(Marco marco) {
         takeDamage(marco, AttackType.SALTO);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Boo) {
+            Boo other = (Boo) obj;
+            return ( this.getAtk()== other.getAtk())
+                    && (this.getDef() == other.getDef())
+                    && (this.getHpMAX() == other.getHpMAX())
+                    && (this.getHpMin() == other.getHpMin())
+                    && (this.getLvl() == other.getLvl())
+                    && (this.getType() == other.getType());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return EnemyType.BOO.hashCode();
+    }
 }

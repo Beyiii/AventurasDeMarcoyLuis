@@ -40,19 +40,19 @@ public class TestFP {
     }
 
     @Test
-    public void marcoMinHpTest(){
-        int hpMarco = marco.getHp();
+    public void marcoMinFpTest(){
         marco.saltoAttack(goomba);
         marco.saltoAttack(goomba);
         int noRestriction = 1 - 2;
+        int fpExpected = marco.getFpMin(); // fp minimo  = 0
         int fpResult = marco.getFp();
 
         assertNotEquals(noRestriction, fpResult);
-        assertEquals(hpMarco, fpResult);
+        assertEquals(fpExpected, fpResult);
     }
 
     @Test
-    public void luisMaxHpTest(){
+    public void luisMaxFpTest(){
         int fpLuis = luis.getFp();
         luis.addItems(honeySyrup);
         luis.useHoneySyrup(); //Luis ya está en el maximo de su fp
@@ -65,13 +65,13 @@ public class TestFP {
 
     @Test
     public void luisMinHpTest(){
-        int fpLuis = luis.getFp();
         luis.saltoAttack(goomba);
         luis.saltoAttack(goomba);
         int noRestriction = 1 - 2;
+        int fpExpected = luis.getFpMin(); //fp minimo =  0
         int fpResult = luis.getFp();
 
         assertNotEquals(noRestriction, fpResult);
-        assertEquals(fpLuis, fpResult);
+        assertEquals(fpExpected, fpResult);
     }
 }

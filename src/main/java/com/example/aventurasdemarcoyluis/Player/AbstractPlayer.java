@@ -35,8 +35,8 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
         this.fp = FP;
         this.fpMax = FP;
         this.setHp(HP);
-        this.setLvl(LVL);
         this.setHpMAX(HP);
+        this.setLvl(LVL);
         this.type = TYPE;
         this.inventario = new Hashtable<ItemsType, Items>(5);
     }
@@ -93,7 +93,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
      * @return El fp definitivo. fpMax si el fp que se calculó es mayor al fp máximo, y fp calculado si no.
      */
     public int isFpMax(int fp){
-        if (fp <= this.getFpMax()){
+        if (fp >= this.getFpMax()){
             return this.getFpMax();
         }
         else{
@@ -120,7 +120,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     @Override
     public void takeDamage(AbstractEnemy enemy){
         int vida = this.getHp();
-        int daño = (int)(enemy.getK() * enemy.getAtk() * (enemy.getLvl()/this.getDef()));
+        int daño = (int)(enemy.getK() * enemy.getAtk() * enemy.getLvl()/this.getDef());
         int newHp = isHpMin(vida-daño);
         this.setHp(newHp);
     }
@@ -166,7 +166,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     public void useRedMushroom() {
         Items i = inventario.get(ItemsType.REDMUSHROOM);
         if (i != null && this.KO() == false){
-            int vida = (int) (10 * this.getHpMAX() / 100);
+            int vida = this.getHp() + (int)(10 * this.getHpMAX() / 100);
             int newHp = isHpMax(vida);
             this.setHp(newHp);
         }

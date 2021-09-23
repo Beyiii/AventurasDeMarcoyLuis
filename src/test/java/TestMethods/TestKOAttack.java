@@ -19,10 +19,10 @@ public class TestKOAttack {
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(2,4,1,8);
-        spiny = new Spiny(3,10,1,8);
-        boo = new Boo(8,3,5,5);
+        spiny = new Spiny(3,1,1,8);
+        boo = new Boo(8,3,1,5);
 
-        marco = new Marco(10,5,5,1,4);
+        marco = new Marco(10,1,5,1,4);
         luis = new Luis(15,6, 4, 1,6);    }
 
     @Test
@@ -106,7 +106,7 @@ public class TestKOAttack {
 
     @Test
     public void spinyKOAttackMarcoTest(){
-        marco.saltoAttack(spiny);
+        marco.martilloAttack(spiny,0);
         assertTrue(spiny.KO()); //Con el ataque anterior spiny está fuera de combate
 
         int hpMarco = marco.getHp();

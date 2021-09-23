@@ -4,8 +4,7 @@ import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestPlayer {
     private Marco marco;
@@ -14,7 +13,18 @@ public class TestPlayer {
     @BeforeEach
     public void setUp(){
         marco = new Marco(10,5,5,4,4);
-        luis = new Luis(15,6, 4, 6,6);
+        luis = new Luis(10,5,5,4,4);
+    }
+
+    @Test
+    public void equalsTest(){
+        assertEquals(marco, new Marco(10,5,5,4,4));
+        assertEquals(luis, new Luis(10,5,5,4,4));
+    }
+
+    @Test
+    public void notEqualsTest(){
+        assertNotEquals(marco, luis);
     }
 
     /**

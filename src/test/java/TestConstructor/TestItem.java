@@ -4,8 +4,7 @@ import com.example.aventurasdemarcoyluis.Items.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestItem {
     private Star star;
@@ -17,6 +16,20 @@ public class TestItem {
         star = new Star();
         redMushroom = new RedMushroom();
         honeySyrup = new HoneySyrup();
+    }
+
+    @Test
+    public void equalsTest(){
+        assertEquals(star, new Star());
+        assertEquals(redMushroom, new RedMushroom());
+        assertEquals(honeySyrup, new HoneySyrup());
+    }
+
+    @Test
+    public void notEqualsTest(){
+        assertNotEquals(star, redMushroom);
+        assertNotEquals(star, honeySyrup);
+        assertNotEquals(redMushroom, honeySyrup);
     }
 
     /**

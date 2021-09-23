@@ -20,7 +20,7 @@ public class TestKO {
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(2,4,3,8);
-        spiny = new Spiny(3,10,3,8);
+        spiny = new Spiny(3,2,3,8);
         boo = new Boo(8,3,3,5);
 
         marco = new Marco(10,5,5,3,4);
@@ -54,8 +54,8 @@ public class TestKO {
         assertFalse(goomba.KO()); //falso porque aun no es derrotado
 
         marco.saltoAttack(goomba);
-        luis.martilloAttack(goomba);
-        marco.martilloAttack(goomba);
+        luis.martilloAttack(goomba,0);
+        marco.martilloAttack(goomba,0);
 
         assertTrue(goomba.KO());
     }
@@ -64,10 +64,11 @@ public class TestKO {
     public void spinyKOTest(){
         assertFalse(spiny.KO()); //falso porque aun no es derrotado
 
-        marco.martilloAttack(spiny);
-        luis.martilloAttack(spiny);
-        marco.martilloAttack(spiny);
+        marco.martilloAttack(spiny, 0);
+        luis.martilloAttack(spiny, 0);
+        marco.martilloAttack(spiny, 0);
 
+        System.out.println(spiny.getHp());
         assertTrue(spiny.KO());
     }
 
