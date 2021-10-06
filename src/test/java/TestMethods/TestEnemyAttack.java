@@ -54,15 +54,6 @@ public class TestEnemyAttack {
     }
 
     @Test
-    public void booAttackMarcoTest(){
-        int hpMarco = marco.getHp();
-        boo.attack(marco);
-        int hpResult = marco.getHp();
-
-        assertEquals(hpMarco, hpResult); //boo no dañó a Marco, ya que no lo puede atacar
-    }
-
-    @Test
     public void goombaAttackLuisTest(){
         int hpLuis = luis.getHp();
         goomba.attack(luis);

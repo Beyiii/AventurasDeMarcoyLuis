@@ -6,7 +6,7 @@ import com.example.aventurasdemarcoyluis.Player.*;
  * Clase extiene de AbstractEnemy.
  * Clase para representar al personaje enemigo Spiny.
  */
-public class Spiny extends AbstractEnemy {
+public class Spiny extends AbstractEnemy implements AttackedByLuis{
 
     /**
      * Crea al enemigo tipo Spiny.
@@ -24,7 +24,7 @@ public class Spiny extends AbstractEnemy {
      * Si Spiny está derrotado no puede atacar.
      * @param player personaje jugador (Marco o Luis).
      */
-    @Override
+
     public void attack(IPlayer player) {
         if (this.KO() == false){
             player.reciveAttackSpiny(this);
@@ -49,7 +49,7 @@ public class Spiny extends AbstractEnemy {
      */
     @Override
     public void reciveAttackMarcoMartillo(Marco marco) {
-        takeDamage(marco, AttackType.MARTILLO);
+        takeDamagePlayer(marco, AttackType.MARTILLO);
     }
 
     /**
@@ -69,7 +69,7 @@ public class Spiny extends AbstractEnemy {
      */
     @Override
     public void reciveAttackluisMartillo(Luis luis) {
-        takeDamage(luis, AttackType.MARTILLO);
+        takeDamagePlayer(luis, AttackType.MARTILLO);
     }
 
     @Override

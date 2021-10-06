@@ -6,7 +6,7 @@ import com.example.aventurasdemarcoyluis.Player.*;
  * Clase extiene de AbstractEnemy.
  * Clase para representar al personaje enemigo Goomba.
  */
-public class Goomba extends AbstractEnemy {
+public class Goomba extends AbstractEnemy implements AttackedByLuis {
 
     /**
      * Crea al enemigo tipo Goomba.
@@ -24,7 +24,6 @@ public class Goomba extends AbstractEnemy {
      * Si Goomba está derrotado no puede atacar.
      * @param player personaje jugador (Marco o Luis).
      */
-    @Override
     public void attack(IPlayer player) {
         if (this.KO() == false){
             player.reciveAttackGoomba(this);
@@ -38,7 +37,7 @@ public class Goomba extends AbstractEnemy {
      */
     @Override
     public void reciveAttackMarcoSalto(Marco marco) {
-        takeDamage(marco, AttackType.SALTO);
+        takeDamagePlayer(marco, AttackType.SALTO);
     }
 
     /**
@@ -48,7 +47,7 @@ public class Goomba extends AbstractEnemy {
 
     @Override
     public void reciveAttackMarcoMartillo(Marco marco) {
-        takeDamage(marco, AttackType.MARTILLO);
+        takeDamagePlayer(marco, AttackType.MARTILLO);
     }
 
 
@@ -58,7 +57,7 @@ public class Goomba extends AbstractEnemy {
      */
     @Override
     public void reciveAttackLuisSalto(Luis luis) {
-        takeDamage(luis, AttackType.SALTO);
+        takeDamagePlayer(luis, AttackType.SALTO);
     }
 
     /**
@@ -68,7 +67,7 @@ public class Goomba extends AbstractEnemy {
 
     @Override
     public void reciveAttackluisMartillo(Luis luis) {
-        takeDamage(luis, AttackType.MARTILLO);
+        takeDamagePlayer(luis, AttackType.MARTILLO);
     }
 
     @Override

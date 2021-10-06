@@ -1,5 +1,7 @@
 package com.example.aventurasdemarcoyluis;
 
+import com.example.aventurasdemarcoyluis.Player.AbstractPlayer;
+
 /**
  * Clase abstracta donde se definen distintos atributos que representan un personaje
  * en el juego.
@@ -12,6 +14,13 @@ public abstract class AbstractCharacter {
     private int hpMin = 0;
     private int lvl = 1;
 
+    public AbstractCharacter(int ATK, int DEF, int HP, int LVL){
+        this.atk = ATK;
+        this.def = DEF;
+        this.hp = HP;
+        this.hpMAX = HP;
+        this.lvl = LVL;
+    }
     /**
      * Se obtiene los punto de ataque.
      * @return los puntos de ataque.

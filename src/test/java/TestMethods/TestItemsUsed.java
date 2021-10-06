@@ -20,6 +20,8 @@ public class TestItemsUsed {
     private RedMushroom redMushroom;
     private HoneySyrup honeySyrup;
 
+    private int setSeed = 1014646950; //para que no falle el ataque con martillo
+
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(8,4,15,8);
@@ -33,6 +35,10 @@ public class TestItemsUsed {
         star = new Star();
         redMushroom = new RedMushroom();
         honeySyrup = new HoneySyrup();
+
+        marco.setSeed(setSeed);
+        luis.setSeed(setSeed);
+
     }
 
     @Test

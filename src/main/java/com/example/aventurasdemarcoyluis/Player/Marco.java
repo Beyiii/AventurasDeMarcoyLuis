@@ -25,8 +25,7 @@ public class Marco extends AbstractPlayer {
      * Si Marco está fuera de combate no puede atacar.
      * @param enemy personaje enemigo.
      */
-    @Override
-    public void saltoAttack(IEnemy enemy){
+    public void saltoAttack(AttackedByMarco enemy){
         if (!this.KO()) { // NO ESTÁ DERROTADO, PUEDE ATACAR
             int newFp = isFpMin(this.getFp() - 1);
             this.setFp(newFp);
@@ -37,38 +36,18 @@ public class Marco extends AbstractPlayer {
     /**
      * Permite que Marco pueda atacar con martillo a sus enemigos.
      * Si el jugador está fuera de combate no puede atacar.
-     * Tiene un 25% de probabilidades de fallar.
+     * Tiene un 25% de probabilidades de fallar (r == 1).
+     * Si r es 2, 3  o 4 acierta el ataque.
      * @param enemy personaje enemigo.
      */
-    @Override
-    public void martilloAttack(IEnemy enemy) {
-        int r = probabilidadMartillo(25);
-        if (!this.KO() && r == 1){
-            int newFp = isFpMin(this.getFp() - 2);
-            this.setFp(newFp);
-            enemy.reciveAttackMarcoMartillo(this);
-        }
+    public void martilloAttack(AttackedByMarco enemy) {
+        int r = fallo();
         if (!this.KO() && r != 1){
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
-        }
-    }
-
-    /**
-     * Permite que Marco pueda atacar con martillo a sus enemigos.
-     * Si el jugador está fuera de combate no puede atacar.
-     * Existe una probabilidad de fallar.
-     * @param enemy personaje enemigo.
-     * @param probabilidadDeFallo Porcentaje (0-100) de que el ataque falle.
-     */
-    public void martilloAttack(IEnemy enemy, int probabilidadDeFallo) {
-        int r = probabilidadMartillo(probabilidadDeFallo);
-        if (!this.KO() && r == 1){
-            int newFp = isFpMin(this.getFp() - 2);
-            this.setFp(newFp);
             enemy.reciveAttackMarcoMartillo(this);
         }
-        if (!this.KO() && r != 1) {
+        if (!this.KO() && r == 1){
             int newFp = isFpMin(this.getFp() - 2);
             this.setFp(newFp);
         }

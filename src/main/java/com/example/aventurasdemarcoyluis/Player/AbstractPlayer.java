@@ -12,6 +12,7 @@ import com.example.aventurasdemarcoyluis.Items.*;
  */
 
 public abstract class AbstractPlayer extends AbstractCharacter implements IPlayer {
+    private final Random random;
     private int fp;
     private int fpMin = 0;
     private int fpMax;
@@ -30,17 +31,13 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
      * @param TYPE Es el tipo de personaje principar: Marco o Luis.
      */
     public AbstractPlayer(int ATK, int DEF, int FP, int HP, int LVL, PlayerType TYPE){
-        this.setAtk(ATK);
-        this.setDef(DEF);
+        super(ATK, DEF, HP, LVL);
         this.fp = FP;
         this.fpMax = FP;
-        this.setHp(HP);
-        this.setHpMAX(HP);
-        this.setLvl(LVL);
+        random = new Random();
         this.type = TYPE;
         this.inventario = new Hashtable<ItemsType, Items>(5);
     }
-
 
     /**
      * Obtiene los puntos para poder atacar.
@@ -130,23 +127,23 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     }
 
     /**
-     * Metodo auxiliar. Usado para el ataque tipo martillo
-     * @param probabilidadDeFallo porcentaje de fallo.
-     * @return 0 si el está dentro del porcentaje de fallo dado, 1 si no.
+     * Metodo auxiliar. Usado para el metodo fallo.
+     * @param seed valor de la semilla.
      */
-    public static int probabilidadMartillo(int probabilidadDeFallo){
-        int random = new Random().nextInt(100);
-        if (random < probabilidadDeFallo) {
-            //FALLO EL ATAQUE
-            return 0;
-        }
-        else{
-            return 1;
-        }
+    public void setSeed(final long seed){
+        random.setSeed(seed);
+    }
+
+    /**
+     * Metodo auxiliar. Usado para el ataque tipo martillo
+     * @return retorna un número entre [1,4] cada uno con 25% de probabilidades de salir.
+     */
+    public int fallo(){
+       return random.nextInt(4) + 1;
     }
 
     @Override
-    public void takeDamage(AbstractEnemy enemy){
+    public void takeDamageEnemy(IEnemy enemy){
         int vida = this.getHp();
         int daño = (int)(enemy.getK() * enemy.getAtk() * enemy.getLvl()/this.getDef());
         int newHp = isHpMin(vida-daño);
@@ -154,25 +151,13 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     }
 
     @Override
-    public void saltoAttack(IEnemy enemy) {
-    }
-
-    @Override
-    public void martilloAttack(IEnemy enemy) {
-    }
-
-    @Override
     public void reciveAttackGoomba(Goomba goomba) {
-        takeDamage(goomba);
+        takeDamageEnemy(goomba);
     }
 
     @Override
     public void reciveAttackSpiny(Spiny spiny) {
-        takeDamage(spiny);
-    }
-
-    @Override
-    public void reciveAttackBoo(Boo boo) {
+        takeDamageEnemy(spiny);
     }
 
     @Override

@@ -3,7 +3,6 @@ package TestMethods;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,6 +15,8 @@ public class TestKOAttack {
 
     private Marco marco;
     private Luis luis;
+
+    private int setSeed = 1014646950; //para que no falle el ataque con martillo
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(2,4,1,8);
@@ -23,7 +24,11 @@ public class TestKOAttack {
         boo = new Boo(8,3,1,5);
 
         marco = new Marco(10,1,5,1,4);
-        luis = new Luis(15,6, 4, 1,6);    }
+        luis = new Luis(15,6, 4, 1,6);
+
+        marco.setSeed(setSeed);
+        luis.setSeed(setSeed);
+    }
 
     @Test
     public void marcoKOAttackGoombaTest(){
@@ -32,7 +37,7 @@ public class TestKOAttack {
 
         int hpGoomba = goomba.getHp();
         marco.saltoAttack(goomba);
-        marco.martilloAttack(goomba,0);
+        marco.martilloAttack(goomba);
 
         assertEquals(1, hpGoomba); //No hubo daño hacia goomba
     }
@@ -43,7 +48,7 @@ public class TestKOAttack {
         assertTrue(marco.KO()); //Con el ataque anterior marco está fuera de combate
 
         int hpSpiny = spiny.getHp();
-        marco.martilloAttack(spiny,0);
+        marco.martilloAttack(spiny);
 
         assertEquals(1, hpSpiny); //No hubo daño hacia spiny
     }
@@ -66,7 +71,7 @@ public class TestKOAttack {
 
         int hpGoomba = goomba.getHp();
         luis.saltoAttack(goomba);
-        luis.martilloAttack(goomba,0);
+        luis.martilloAttack(goomba);
 
         assertEquals(1, hpGoomba); //No hubo daño hacia goomba
     }
@@ -77,7 +82,7 @@ public class TestKOAttack {
         assertTrue(luis.KO()); //Con el ataque anterior luis está fuera de combate
 
         int hpSpiny = spiny.getHp();
-        luis.martilloAttack(spiny, 0);
+        luis.martilloAttack(spiny);
 
         assertEquals(1, hpSpiny); //No hubo daño hacia spiny
     }
@@ -106,7 +111,7 @@ public class TestKOAttack {
 
     @Test
     public void spinyKOAttackMarcoTest(){
-        marco.martilloAttack(spiny,0);
+        marco.martilloAttack(spiny);
         assertTrue(spiny.KO()); //Con el ataque anterior spiny está fuera de combate
 
         int hpMarco = marco.getHp();
@@ -117,7 +122,7 @@ public class TestKOAttack {
 
     @Test
     public void spinyKOAttackLuisTest(){
-        luis.martilloAttack(spiny, 0);
+        luis.martilloAttack(spiny);
         assertTrue(spiny.KO()); //Con el ataque anterior spiny está fuera de combate
 
         int hpLuis = luis.getHp();

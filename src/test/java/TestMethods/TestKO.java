@@ -3,7 +3,6 @@ package TestMethods;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +16,8 @@ public class TestKO {
     private Marco marco;
     private Luis luis;
 
+    private int setSeed = 1014646950; //para que no falle el ataque con martillo
+
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(2,4,3,8);
@@ -25,6 +26,9 @@ public class TestKO {
 
         marco = new Marco(10,5,5,3,4);
         luis = new Luis(15,6, 4, 3,6);
+
+        marco.setSeed(setSeed);
+        luis.setSeed(setSeed);
     }
 
     @Test
@@ -54,8 +58,8 @@ public class TestKO {
         assertFalse(goomba.KO()); //falso porque aun no es derrotado
 
         marco.saltoAttack(goomba);
-        luis.martilloAttack(goomba,0);
-        marco.martilloAttack(goomba,0);
+        luis.martilloAttack(goomba);
+        marco.martilloAttack(goomba);
 
         assertTrue(goomba.KO());
     }
@@ -64,11 +68,10 @@ public class TestKO {
     public void spinyKOTest(){
         assertFalse(spiny.KO()); //falso porque aun no es derrotado
 
-        marco.martilloAttack(spiny, 0);
-        luis.martilloAttack(spiny, 0);
-        marco.martilloAttack(spiny, 0);
+        marco.martilloAttack(spiny);
+        luis.martilloAttack(spiny);
+        marco.martilloAttack(spiny);
 
-        System.out.println(spiny.getHp());
         assertTrue(spiny.KO());
     }
 
@@ -77,7 +80,6 @@ public class TestKO {
         assertFalse(boo.KO()); //falso porque aun no es derrotado
 
         marco.saltoAttack(boo);
-        luis.saltoAttack(boo);
         marco.saltoAttack(boo);
 
         assertTrue(boo.KO());

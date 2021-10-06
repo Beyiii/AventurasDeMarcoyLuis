@@ -1,9 +1,9 @@
 package TestMethods;
 
+
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Player.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +20,8 @@ public class TestPlayerAttack  {
     private int kSalto = 1;
     private double kMartillo = 1.5;
 
+    private int setSeed = 1014646950; //para que no falle el ataque con martillo
+
     @BeforeEach
     public void setUp() {
         goomba = new Goomba(2,4,15,8);
@@ -28,6 +30,9 @@ public class TestPlayerAttack  {
 
         marco = new Marco(10,5,5,20,4);
         luis = new Luis(5,6, 4, 20,6);
+
+        marco.setSeed(setSeed);
+        luis.setSeed(setSeed);
     }
     /**Que Marco ataque a goomba con salto (lo puede dañar)
      * Que Marco ataque a goomba con martillo (lo puede dañar)
@@ -58,7 +63,7 @@ public class TestPlayerAttack  {
         int hpGoomba = goomba.getHp();
         int fpMarco = marco.getFp();
 
-        marco.martilloAttack(goomba, 0);
+        marco.martilloAttack(goomba);
 
         int hpExpected = 15 - (int)(kMartillo * 10 * 4/4);
         int hpResult = goomba.getHp();
@@ -103,7 +108,7 @@ public class TestPlayerAttack  {
         int hpSpiny = spiny.getHp();
         int fpMarco = marco.getFp();
 
-        marco.martilloAttack(spiny, 0);
+        marco.martilloAttack(spiny);
 
         int hpExpected = 15 - (int)(kMartillo * 10 * 4/10);
         int hpResult = spiny.getHp();
@@ -142,7 +147,7 @@ public class TestPlayerAttack  {
         int hpBoo = boo.getHp();
         int fpMarco = marco.getFp();
 
-        marco.martilloAttack(boo, 0);
+        marco.martilloAttack(boo);
 
         int hpResult = boo.getHp();
 
@@ -180,7 +185,7 @@ public class TestPlayerAttack  {
         int hpGoomba = goomba.getHp();
         int fpLuis = luis.getFp();
 
-        luis.martilloAttack(goomba,0);
+        luis.martilloAttack(goomba);
 
         int hpExpected = 15 - (int)(kMartillo * 5 * 6/4);
         int hpResult = goomba.getHp();
@@ -224,7 +229,7 @@ public class TestPlayerAttack  {
         int hpSpiny = spiny.getHp();
         int fpLuis = luis.getFp();
 
-        luis.martilloAttack(spiny,0);
+        luis.martilloAttack(spiny);
 
         int hpExpected = 15 - (int)(kMartillo * 5 * 6/10);
         int hpResult = spiny.getHp();
@@ -237,42 +242,5 @@ public class TestPlayerAttack  {
 
         assertNotEquals(fpLuis, fpResult);
         assertEquals(fpExpected, fpResult);
-    }
-
-    @Test
-    public void luisAttackBooSaltoTest(){
-        int hpBoo = boo.getHp();
-        int fpLuis = luis.getFp();
-
-        luis.saltoAttack(boo);
-
-        int hpResult = boo.getHp();
-
-        int fpExpected = 4 - 1;
-        int fpResult = luis.getFp();
-
-        assertEquals(hpBoo, hpResult); // luis no puede atacar a boo
-
-        assertNotEquals(fpLuis, fpResult);
-        assertEquals(fpExpected, fpResult);
-    }
-
-    @Test
-    public void luisAttackBooMartilloTest(){
-        int hpBoo = boo.getHp();
-        int fpLuis = luis.getFp();
-
-        luis.martilloAttack(boo,0);
-
-        int hpResult = boo.getHp();
-
-        int fpExpected = 4 - 2;
-        int fpResult = luis.getFp();
-
-        assertEquals(hpBoo, hpResult); // luis no puede atacar a boo
-
-        assertNotEquals(fpLuis, fpResult);
-        assertEquals(fpExpected, fpResult);
-
     }
 }

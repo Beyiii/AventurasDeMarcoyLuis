@@ -24,8 +24,7 @@ public class Boo extends AbstractEnemy{
      * Si Boo está derrotado no puede atacar.
      * @param player personaje jugador (solo puede atacar a Luis).
      */
-    @Override
-    public void attack(IPlayer player) {
+    public void attack(AttackedByBoo player) {
         if (this.KO() == false){
             player.reciveAttackBoo(this);
         }
@@ -38,7 +37,7 @@ public class Boo extends AbstractEnemy{
      */
     @Override
     public void reciveAttackMarcoSalto(Marco marco) {
-        takeDamage(marco, AttackType.SALTO);
+        takeDamagePlayer(marco, AttackType.SALTO);
     }
 
     @Override

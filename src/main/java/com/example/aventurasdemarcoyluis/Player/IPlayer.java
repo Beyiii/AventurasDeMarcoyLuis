@@ -5,22 +5,28 @@ import com.example.aventurasdemarcoyluis.Items.Items;
 
 public interface IPlayer{
     /**
+     * Se obtiene los punto de ataque.
+     * @return los puntos de ataque.
+     */
+    public int getAtk();
+
+    /**
+     * Se obtiene el nivel del personaje.
+     * @return el nivel del personaje.
+     */
+    public int getLvl();
+
+    /**
+     * Obtiene el tipo de enemigo que es (GOOMBA, SPINY O BOO).
+     * @return el tipo de enemigo.
+     */
+    public PlayerType getType();
+
+    /**
      * Metodo auxiliar. Reduce el hp del jugador luego de ser atacado por un enemigo.
      * @param enemy Tipo de enemigo (GOOMBA, SPINY O BOO)
      */
-    void takeDamage(AbstractEnemy enemy);
-
-    /**
-     * Permite que el jugador pueda atacar con salto a sus enemigos.
-     * @param enemy personaje enemigo.
-     */
-    void saltoAttack(IEnemy enemy);
-
-    /**
-     * Permite que el jugador pueda atacar con martillo a sus enemigos.
-     * @param enemy personaje enemigo.
-     */
-    void martilloAttack(IEnemy enemy);
+    void takeDamageEnemy(IEnemy enemy);
 
     /**
      * Determina el nuevo hp del personaje (jugador) luego de ser atacado por un enemigo tipo Goomba.
@@ -34,11 +40,6 @@ public interface IPlayer{
      */
     void reciveAttackSpiny(Spiny spiny);
 
-    /**
-     * Determina el nuevo hp del personaje (jugador) luego de ser atacado por un enemigo tipo Boo.
-     * @param boo Enemigo tipo BOO.
-     */
-    void reciveAttackBoo(Boo boo);
 
     /**
      * Agrega items al inventario del personajes (jugador)

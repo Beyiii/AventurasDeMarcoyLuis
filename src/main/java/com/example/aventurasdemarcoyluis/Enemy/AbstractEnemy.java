@@ -7,7 +7,7 @@ import com.example.aventurasdemarcoyluis.Player.*;
  * Clase abstracta que extiende de AbstracCharacter, donde se definen atributos extras que
  * determinan a un personaje enemigo (personaje que ataca a jugador)
  */
-public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy {
+public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy, AttackedByMarco{
     private double k = 0.75;
     private EnemyType type;
 
@@ -21,31 +21,22 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy 
      * @param TYPE Es el tipo de enemigo: Goomba, Spiny o Boo
      */
     public AbstractEnemy(int ATK, int DEF, int HP, int LVL, EnemyType TYPE){
-        this.setAtk(ATK);
-        this.setDef(DEF);
-        this.setHp(HP);
-        this.setLvl(LVL);
+        super(ATK, DEF, HP, LVL);
         this.type = TYPE;
     }
 
-    /**
-     * Obtiene la constante k de los enemigos.
-     * @return la constante k.
-     */
+    @Override
     public double getK() {
         return k;
     }
 
-    /**
-     * Obtiene el tipo de enemigo que es (GOOMBA, SPINY O BOO).
-     * @return el tipo de enemigo.
-     */
+    @Override
     public EnemyType getType() {
         return type;
     }
 
     @Override
-    public void takeDamage(AbstractPlayer player, AttackType attackType){
+    public void takeDamagePlayer(IPlayer player, AttackType attackType){
         int vida = this.getHp();
         double k = attackType.getK();
         int daño = (int)(k * player.getAtk() * player.getLvl()/this.getDef());
@@ -54,23 +45,11 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy 
     }
 
     @Override
-    public void attack(IPlayer player) {
-    }
-
-    @Override
     public void reciveAttackMarcoSalto(Marco marco) {
     }
 
     @Override
     public void reciveAttackMarcoMartillo(Marco marco) {
-    }
-
-    @Override
-    public void reciveAttackLuisSalto(Luis luis) {
-    }
-
-    @Override
-    public void reciveAttackluisMartillo(Luis luis) {
     }
 }
 
