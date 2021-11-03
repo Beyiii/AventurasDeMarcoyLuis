@@ -17,11 +17,10 @@ public abstract class AbstractEnemy extends AbstractCharacter implements IEnemy,
      * @param ATK Corresponde al daño total que posee un enemigo.
      * @param DEF Permite mitigar el daño recibido por un jugador.
      * @param HP Puntos de vida.
-     * @param LVL Corresponde al nivel del personaje.
      * @param TYPE Es el tipo de enemigo: Goomba, Spiny o Boo
      */
-    public AbstractEnemy(int ATK, int DEF, int HP, int LVL, EnemyType TYPE){
-        super(ATK, DEF, HP, LVL);
+    public AbstractEnemy(int ATK, int DEF, int HP, EnemyType TYPE){
+        super(ATK, DEF, HP);
         this.type = TYPE;
     }
 

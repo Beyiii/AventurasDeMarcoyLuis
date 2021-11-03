@@ -14,12 +14,11 @@ public abstract class AbstractCharacter {
     private int hpMin = 0;
     private int lvl = 1;
 
-    public AbstractCharacter(int ATK, int DEF, int HP, int LVL){
+    public AbstractCharacter(int ATK, int DEF, int HP){
         this.atk = ATK;
         this.def = DEF;
         this.hp = HP;
         this.hpMAX = HP;
-        this.lvl = LVL;
     }
     /**
      * Se obtiene los punto de ataque.

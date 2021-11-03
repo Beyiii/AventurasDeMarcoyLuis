@@ -27,11 +27,10 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
      * @param DEF Permite mitigar el daño recibido por un enemigo.
      * @param FP Puntos de ataque. Utilizados para relizar ataques.
      * @param HP Puntos de vida.
-     * @param LVL Corresponde al nivel del personaje.
      * @param TYPE Es el tipo de personaje principar: Marco o Luis.
      */
-    public AbstractPlayer(int ATK, int DEF, int FP, int HP, int LVL, PlayerType TYPE){
-        super(ATK, DEF, HP, LVL);
+    public AbstractPlayer(int ATK, int DEF, int FP, int HP, PlayerType TYPE){
+        super(ATK, DEF, HP);
         this.fp = FP;
         this.fpMax = FP;
         random = new Random();
