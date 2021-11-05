@@ -4,7 +4,7 @@ package com.example.aventurasdemarcoyluis;
  * Clase abstracta donde se definen distintos atributos que representan un personaje
  * en el juego.
  */
-public abstract class AbstractCharacter {
+public abstract class AbstractCharacter implements ICharacter{
     private int atk;
     private int def;
     private int hp;

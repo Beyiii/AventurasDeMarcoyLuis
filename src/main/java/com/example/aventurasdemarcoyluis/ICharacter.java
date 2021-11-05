@@ -1,2 +1,4 @@
-package com.example.aventurasdemarcoyluis;public interface ICharacter {
+package com.example.aventurasdemarcoyluis;
+
+public interface ICharacter {
 }

@@ -11,4 +11,6 @@ module com.example.aventurasdemarcoyluis {
     opens com.example.aventurasdemarcoyluis.Enemy to javafx.fxml;
     exports com.example.aventurasdemarcoyluis.Items;
     opens com.example.aventurasdemarcoyluis.Items to javafx.fxml;
+    exports com.example.aventurasdemarcoyluis.Controller;
+    opens com.example.aventurasdemarcoyluis.Controller to javafx.fxml;
 }
