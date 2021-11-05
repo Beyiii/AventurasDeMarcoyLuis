@@ -16,7 +16,7 @@ public class Spiny extends AbstractEnemy implements AttackedByLuis{
      * @param LVL Corresponde al nivel de Spiny.
      */
     public Spiny(int ATK, int DEF, int HP, int LVL) {
-        super(ATK, DEF, HP, LVL, EnemyType.SPINY);
+        super(ATK, DEF, HP, EnemyType.SPINY);
     }
 
     /**

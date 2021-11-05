@@ -1,7 +1,5 @@
 package com.example.aventurasdemarcoyluis;
 
-import com.example.aventurasdemarcoyluis.Player.AbstractPlayer;
-
 /**
  * Clase abstracta donde se definen distintos atributos que representan un personaje
  * en el juego.

@@ -17,7 +17,7 @@ public class Luis extends AbstractPlayer implements AttackedByBoo{
      * @param LVL Corresponde al nivel de Luis.
      */
     public Luis(int ATK, int DEF, int FP, int HP, int LVL) {
-        super(ATK, DEF, FP, HP, LVL, PlayerType.LUIS);
+        super(ATK, DEF, FP, HP, PlayerType.LUIS);
     }
 
     /**

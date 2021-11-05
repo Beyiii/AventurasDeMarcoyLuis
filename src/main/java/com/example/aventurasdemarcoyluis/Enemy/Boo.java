@@ -16,7 +16,7 @@ public class Boo extends AbstractEnemy{
      * @param LVL Corresponde al nivel de Boo.
      */
     public Boo(int ATK, int DEF, int HP, int LVL) {
-        super(ATK, DEF, HP, LVL, EnemyType.BOO);
+        super(ATK, DEF, HP, EnemyType.BOO);
     }
 
     /**

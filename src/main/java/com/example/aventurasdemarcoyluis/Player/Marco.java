@@ -17,7 +17,7 @@ public class Marco extends AbstractPlayer {
      * @param LVL Corresponde al nivel de Marco.
      */
     public Marco(int ATK, int DEF, int FP, int HP, int LVL) {
-        super(ATK, DEF, FP, HP, LVL, PlayerType.MARCO);
+        super(ATK, DEF, FP, HP, PlayerType.MARCO);
     }
 
     /**

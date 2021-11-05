@@ -16,7 +16,7 @@ public class Goomba extends AbstractEnemy implements AttackedByLuis {
      * @param LVL Corresponde al nivel de Goomba.
      */
     public Goomba(int ATK, int DEF, int HP, int LVL) {
-        super(ATK, DEF, HP, LVL, EnemyType.GOOMBA);
+        super(ATK, DEF, HP, EnemyType.GOOMBA);
     }
 
     /**
