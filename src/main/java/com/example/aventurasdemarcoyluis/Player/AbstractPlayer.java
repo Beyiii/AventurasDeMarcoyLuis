@@ -3,6 +3,7 @@ package com.example.aventurasdemarcoyluis.Player;
 import java.util.Hashtable;
 import java.util.Random;
 import com.example.aventurasdemarcoyluis.AbstractCharacter;
+import com.example.aventurasdemarcoyluis.Baul.Baul;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Items.*;
 
@@ -160,24 +161,9 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     }
 
     @Override
-    public void addItems(Items item){
-        this.inventario.put(item.getType(), item);
-    }
-
-
-    @Override
-    public void useStar() {
-        Items i = inventario.get(ItemsType.STAR);
-        if (i != null && this.KO() == false){
-            this.setEstado("invencible");
-        }
-        else{}
-    }
-
-    @Override
-    public void useRedMushroom() {
-        Items i = inventario.get(ItemsType.REDMUSHROOM);
-        if (i != null && this.KO() == false){
+    public void useRedMushroom(Baul baul) {
+        boolean t = baul.useItem(ItemsType.REDMUSHROOM);
+        if (t = true && this.KO() == false){
             int vida = this.getHp() + (int)(10 * this.getHpMAX() / 100);
             int newHp = isHpMax(vida);
             this.setHp(newHp);
@@ -187,7 +173,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
 
 
     @Override
-    public void useHoneySyrup() {
+    public void useHoneySyrup(Baul baul) {
         Items i = inventario.get(ItemsType.HONEYSYRUP);
         if (i != null && this.KO() == false) {
             int newFp = isFpMax(this.getFp() + 3);

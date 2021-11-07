@@ -1,5 +1,6 @@
 package com.example.aventurasdemarcoyluis.Player;
 
+import com.example.aventurasdemarcoyluis.Baul.Baul;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Items.Items;
 
@@ -59,12 +60,12 @@ public interface IPlayer{
      * el cual hace que el peronaje pueda recuperar el 10% de sus puntos de vida (hp).
      * Si el jugador está derrotado no puede ocupar el item.
      */
-    void useRedMushroom();
+    void useRedMushroom(Baul baul);
 
     /**
      * Metodo para que el jugador pueda ocupas el item Honey Syrup,
      * el cual hace que el personaje tenga 3 puntos de ataque (fp) extras.
      * Si el jugador está derrotado no puede ocupar el item.
      */
-    void useHoneySyrup();
+    void useHoneySyrup(Baul baul);
 }

@@ -1,6 +1,7 @@
 package com.example.aventurasdemarcoyluis.Baul;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import com.example.aventurasdemarcoyluis.Items.*;
 
@@ -9,13 +10,13 @@ import com.example.aventurasdemarcoyluis.Items.*;
  * Es ocupado por los personajes principales
  */
 public class Baul {
-    private final List<Items> baul;
+    private final Hashtable<ItemsType, Items> baul;
 
     /**
-     * Crea una lista donde estarán los items que se pueden utilizar.
+     * Crea una hashtable donde estarán los items que se pueden utilizar.
      */
     public Baul(){
-        this.baul = new ArrayList<Items>();
+        this.baul =  new Hashtable<ItemsType, Items>();
     }
 
     /**
@@ -23,14 +24,14 @@ public class Baul {
      * @param item red mushroom, honey syrup u otro.
      */
     public void addItem(Items item){
-        this.baul.add(item);
+        this.baul.put(item.getType(), item);
     }
 
     /**
      * Retira un item del baul.
      * @param item red mushroom, honey syrup u otro.
      */
-    public void removeItem(Items item){
+    public void removeItem(ItemsType item){
         this.baul.remove(item);
     }
 
@@ -39,8 +40,8 @@ public class Baul {
      * @param item red mushroom, honey syrup u otro.
      * @return true si el item se encuentra en la lista, false si el no.
      */
-    public boolean useItem(Items item){
-        boolean t = this.baul.contains(item);
+    public boolean useItem(ItemsType item){
+        boolean t = this.baul.containsKey(item);
         this.removeItem(item);
         return t;
     }

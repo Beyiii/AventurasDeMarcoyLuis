@@ -62,7 +62,14 @@ public class Turnos {
         this.turnoList.add(personaje);
     }
 
-    public void addTurnoIndice()
+    /**
+     * Agreaga a un personaje a la lista de turnos.
+     * @param indice el lugar de la lista de turnos en donde se quiere poner al personaje.
+     * @param personaje Marco, Luis, Goomba, Spiny o Boo.
+     */
+    public void addTurnoIndice(int indice, ICharacter personaje){
+        this.turnoList.add(indice, personaje);
+    }
 
     /**
      * Se obtiene el personaje asociado al turno actual.
