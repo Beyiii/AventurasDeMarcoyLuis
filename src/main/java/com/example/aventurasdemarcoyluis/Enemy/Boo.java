@@ -17,6 +17,18 @@ public class Boo extends AbstractEnemy{
      */
     public Boo(int ATK, int DEF, int HP, int LVL) {
         super(ATK, DEF, HP, EnemyType.BOO);
+        this.setLvl(LVL);
+    }
+
+    /**
+     * Crea al enemigo tipo Boo.
+     * El nivel en este constructor es 1 (LVL = 1).
+     * @param ATK Corresponde al daño total que posee Boo.
+     * @param DEF Permite mitigar el daño recibido por un jugador.
+     * @param HP Puntos de vida de Boo.
+     */
+    public Boo(int ATK, int DEF, int HP) {
+        super(ATK, DEF, HP, EnemyType.BOO);
     }
 
     /**

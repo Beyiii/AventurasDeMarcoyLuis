@@ -17,7 +17,20 @@ public class Spiny extends AbstractEnemy implements AttackedByLuis{
      */
     public Spiny(int ATK, int DEF, int HP, int LVL) {
         super(ATK, DEF, HP, EnemyType.SPINY);
+        this.setLvl(LVL);
     }
+
+    /**
+     * Crea al enemigo tipo Spiny.
+     * El nivel en este constructor es 1 (LVL = 1).
+     * @param ATK Corresponde al daño total que posee Spiny.
+     * @param DEF Permite mitigar el daño recibido por un jugador.
+     * @param HP Puntos de vida de Spiny.
+     */
+    public Spiny(int ATK, int DEF, int HP) {
+        super(ATK, DEF, HP, EnemyType.SPINY);
+    }
+
 
     /**
      * Permite que Spiny pueda atacar al jugador.

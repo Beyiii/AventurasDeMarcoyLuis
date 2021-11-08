@@ -18,6 +18,19 @@ public class Marco extends AbstractPlayer {
      */
     public Marco(int ATK, int DEF, int FP, int HP, int LVL) {
         super(ATK, DEF, FP, HP, PlayerType.MARCO);
+        this.setLvl(LVL);
+    }
+
+    /**
+     * Crea al jugador tipo Marco, usa el constructor de la clase abstracta AbstractPlayer.
+     * El nivel en este constructor es 1 (LVL = 1).
+     * @param ATK Corresponde al daño total que posee Marco.
+     * @param DEF Permite mitigar el daño recibido por un enemigo.
+     * @param FP Puntos de ataque. Utilizados para relizar ataques.
+     * @param HP Puntos de vida de Marco.
+     */
+    public Marco(int ATK, int DEF, int FP, int HP){
+        super(ATK, DEF, FP, HP, PlayerType.MARCO);
     }
 
     /**

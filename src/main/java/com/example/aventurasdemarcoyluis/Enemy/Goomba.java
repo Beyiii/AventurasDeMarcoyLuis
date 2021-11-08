@@ -15,7 +15,20 @@ public class Goomba extends AbstractEnemy implements AttackedByLuis {
      * @param HP Puntos de vida de Goomba.
      * @param LVL Corresponde al nivel de Goomba.
      */
+
     public Goomba(int ATK, int DEF, int HP, int LVL) {
+        super(ATK, DEF, HP, EnemyType.GOOMBA);
+        this.setLvl(LVL);
+    }
+
+    /**
+     * Crea al enemigo tipo Goomba.
+     * El nivel en este constructor es 1 (LVL = 1).
+     * @param ATK Corresponde al daño total que posee Goomba.
+     * @param DEF Permite mitigar el daño recibido por un jugador.
+     * @param HP Puntos de vida de Goomba.
+     */
+    public Goomba(int ATK, int DEF, int HP) {
         super(ATK, DEF, HP, EnemyType.GOOMBA);
     }
 

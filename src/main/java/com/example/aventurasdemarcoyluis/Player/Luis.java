@@ -18,6 +18,19 @@ public class Luis extends AbstractPlayer implements AttackedByBoo{
      */
     public Luis(int ATK, int DEF, int FP, int HP, int LVL) {
         super(ATK, DEF, FP, HP, PlayerType.LUIS);
+        this.setLvl(LVL);
+    }
+
+    /**
+     * Crea al jugador tipo Luis, usa el constructor de la clase abstracta AbstractPlayer.
+     * En este constructor el nivel es 1 (LVL = 1).
+     * @param ATK Corresponde al daño total que posee un Luis.
+     * @param DEF Permite mitigar el daño recibido por un enemigo.
+     * @param FP Puntos de ataque. Utilizados para relizar ataques.
+     * @param HP Puntos de vida de Luis.
+     */
+    public Luis(int ATK, int DEF, int FP, int HP) {
+        super(ATK, DEF, FP, HP, PlayerType.LUIS);
     }
 
     /**
