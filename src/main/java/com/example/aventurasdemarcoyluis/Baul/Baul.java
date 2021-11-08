@@ -45,12 +45,25 @@ public class Baul {
         this.baul.put(item.getType(), item);
     }
 
+    /**
+     * Disminuye las variables redMushrooms o honeySyrup en uno.
+     * @param item REDMUSHROOM o HONEYSYRUP.
+     */
+    public void takeItem(ItemsType item){
+        if(item == ItemsType.REDMUSHROOM){
+            redMushrooms -= 1;
+        }
+        else{
+            honeySyrup -=1;
+        }
+    }
 
     /**
      * Retira un item del baul.
      * @param item red mushroom, honey syrup u otro.
      */
     public void removeItem(ItemsType item){
+        this.takeItem(item);
         this.baul.remove(item);
     }
 
@@ -75,6 +88,10 @@ public class Baul {
         return itemsCount;
     }
 
+    /**
+     * Se obtiene todos los items del baul.
+     * @return una hashtable con los items que quedan en el baul.
+     */
     public Hashtable getAll(){
         return this.baul;
     }
@@ -87,5 +104,21 @@ public class Baul {
         this.baul.clear();
         this.redMushrooms = 0;
         this.honeySyrup = 0;
+    }
+
+    /**
+     * Se obtiene si hay o no red mushrooms.
+     * @return false si no hay items red mushrooms y true si es que hay.
+     */
+    public boolean containRedMushrooms() {
+        return baul.containsKey(ItemsType.REDMUSHROOM);
+    }
+
+    /**
+     * Se obtiene si hay o no honey syrups.
+     * @return false si no hay items honey syrups y true sie es que hay.
+     */
+    public boolean containHoneySyrup() {
+        return baul.containsKey(ItemsType.HONEYSYRUP);
     }
 }

@@ -164,7 +164,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
         }
         else{}
     }
-    
+
     /**
      * Incrementa el HP en un 15% con respecto al HpMax
      */
