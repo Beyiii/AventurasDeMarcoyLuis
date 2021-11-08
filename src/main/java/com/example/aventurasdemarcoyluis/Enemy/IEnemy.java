@@ -34,5 +34,7 @@ public interface IEnemy {
      */
     void takeDamagePlayer(IPlayer player, AttackType attackType);
 
+    boolean KO();
+
 }
 

@@ -15,7 +15,8 @@ public class Turnos {
 
     /**
      * Crea una lista donde estarán los personajes ordenados por su turno.
-     * turn es el indice del personaje que le toca jugar.
+     * Crea una lista donde estaran los tipos de los personajes.
+     * turno es el indice del personaje que le toca jugar.
      */
     public Turnos(){
         turnoList = new ArrayList<ICharacter>();
@@ -41,7 +42,7 @@ public class Turnos {
     /**
      * Cambia el turno actual por el que siguiente turno.
      */
-    public void sgteTurno(){
+    public void passTurno(){
         int n = this.getTurnoNumber();
         int nTurnos = this.turnoList.size() - 1;
 
@@ -55,6 +56,7 @@ public class Turnos {
 
     /**
      * Agrega a un personaje a la lista de turnos.
+     * Agrega el tipo del personaje en la lista de tipos.
      * Se debe agregar los personajes en el orden que uno desee que esten.
      * @param personaje Marco, Luis, Goomba, Spiny o Boo.
      */
@@ -76,8 +78,17 @@ public class Turnos {
      * @return personaje al que le toca jugar.
      */
     public ICharacter getTurnoActual() {
-        int indice = getTurnoNumber();
+        int indice = this.getTurnoNumber();
         return turnoList.get(indice);
+    }
+
+    /**
+     * Se obtiene el personaje asociado al turno siguiente.
+     * @return personaje que le tocará jugar en el proximo turno.
+     */
+    public ICharacter getSgteTurno(){
+        int sgte = this.getTurnoNumber() + 1;
+        return turnoList.get(sgte);
     }
 
     /**
@@ -90,9 +101,21 @@ public class Turnos {
     }
 
     /**
+     * Se obtiene los personajes ordenados por sus turnos.
+     * @return lista de los personajes.
+     */
+    public List getAll(){
+        return this.turnoList;
+    }
+
+    /**
      * Borra los elementos de la lista de turnos.
      */
     public void clearTurnos(){
         this.turnoList.clear();
+    }
+
+    public void removeCharacter(ICharacter character){
+        turnoList.remove(character);
     }
 }

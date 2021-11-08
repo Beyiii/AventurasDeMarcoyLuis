@@ -11,12 +11,31 @@ import com.example.aventurasdemarcoyluis.Items.*;
  */
 public class Baul {
     private final Hashtable<ItemsType, Items> baul;
+    private final Hashtable itemsCount;
+    private int redMushrooms;
+    private int honeySyrup;
 
     /**
      * Crea una hashtable donde estarán los items que se pueden utilizar.
      */
     public Baul(){
         this.baul =  new Hashtable<ItemsType, Items>();
+        this.itemsCount = new Hashtable();
+        this.redMushrooms = 0;
+        this.honeySyrup = 0;
+    }
+
+    /**
+     * Aumenta las variables redMushrooms o honeySyrup en uno.
+     * @param tipo REDMUSHROOM o HONEYSYRUP.
+     */
+    public void countItem(ItemsType tipo){
+        if(tipo == ItemsType.REDMUSHROOM){
+            redMushrooms += 1;
+        }
+        else{
+            honeySyrup +=1;
+        }
     }
 
     /**
@@ -24,8 +43,10 @@ public class Baul {
      * @param item red mushroom, honey syrup u otro.
      */
     public void addItem(Items item){
+        this.countItem(item.getType());
         this.baul.put(item.getType(), item);
     }
+
 
     /**
      * Retira un item del baul.
@@ -47,9 +68,24 @@ public class Baul {
     }
 
     /**
+     * Se obtiene la cantidad de items que hay actualmente.
+     * @return una hashtable con lo items que hay en el baul.
+     */
+    public Hashtable getNumberOfItems(){
+        itemsCount.put(ItemsType.REDMUSHROOM, this.redMushrooms);
+        itemsCount.put(ItemsType.HONEYSYRUP, this.honeySyrup);
+        return itemsCount;
+    }
+
+    public Hashtable getAll(){
+        return this.baul;
+    }
+
+    /**
      * Borra todos los items de la lista.
      */
     public void clearBaul(){
+        this.itemsCount.clear();
         this.baul.clear();
     }
 }

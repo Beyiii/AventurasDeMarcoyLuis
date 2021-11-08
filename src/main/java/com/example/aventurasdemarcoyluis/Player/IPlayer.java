@@ -68,4 +68,6 @@ public interface IPlayer{
      * Si el jugador está derrotado no puede ocupar el item.
      */
     void useHoneySyrup(Baul baul);
+
+    boolean KO();
 }

@@ -163,7 +163,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     @Override
     public void useRedMushroom(Baul baul) {
         boolean t = baul.useItem(ItemsType.REDMUSHROOM);
-        if (t = true && this.KO() == false){
+        if (t == true && this.KO() == false){
             int vida = this.getHp() + (int)(10 * this.getHpMAX() / 100);
             int newHp = isHpMax(vida);
             this.setHp(newHp);
@@ -174,8 +174,8 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
 
     @Override
     public void useHoneySyrup(Baul baul) {
-        Items i = inventario.get(ItemsType.HONEYSYRUP);
-        if (i != null && this.KO() == false) {
+        boolean t = baul.useItem(ItemsType.HONEYSYRUP);
+        if (t == true && this.KO() == false) {
             int newFp = isFpMax(this.getFp() + 3);
             this.setFp(newFp);
         }
