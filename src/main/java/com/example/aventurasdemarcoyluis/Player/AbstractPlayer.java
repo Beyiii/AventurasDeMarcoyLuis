@@ -164,9 +164,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
         }
         else{}
     }
-
-    /**--------------------------------NUEVO-------------------------------------*/
-
+    
     /**
      * Incrementa el HP en un 15% con respecto al HpMax
      */
@@ -197,7 +195,7 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
      * Incrementa la defensa en un 15%
      */
     private void increaseDef(){
-        int newDef = this.getAtk() + (int)(15 * this.getDef() / 100);
+        int newDef = this.getDef() + (int)(15 * this.getDef() / 100);
         this.setDef(newDef);
     }
 
