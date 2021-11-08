@@ -11,9 +11,6 @@ import com.example.aventurasdemarcoyluis.Items.Items;
 import com.example.aventurasdemarcoyluis.Items.ItemsType;
 import com.example.aventurasdemarcoyluis.Items.RedMushroom;
 import com.example.aventurasdemarcoyluis.Player.*;
-import com.example.aventurasdemarcoyluis.State.Death;
-import com.example.aventurasdemarcoyluis.State.EndBattle;
-import com.example.aventurasdemarcoyluis.State.Win;
 import com.example.aventurasdemarcoyluis.Turnos.TurnoEnemy;
 import com.example.aventurasdemarcoyluis.Turnos.TurnoPlayer;
 import com.example.aventurasdemarcoyluis.Turnos.Turnos;
@@ -32,11 +29,11 @@ public class GameController {
     private final TurnoPlayer turnoPlayer;
     private final TurnoEnemy turnoEnemy;
     private final Random random;
-    private final Death death;
-    private final Win win;
-    private final EndBattle endBattle;
     private int enemysNumber = 0;
     private int playersNumber = 0;
+    private boolean playersWin = false;
+    private boolean enemysWin = false;
+    private boolean win = false;
 
     /**
      * Crea los turnos (lista donde se encuentran los personajes)
@@ -48,9 +45,6 @@ public class GameController {
         this.turnoPlayer = new TurnoPlayer();
         this.turnoEnemy = new TurnoEnemy();
         this.random = new Random();
-        this.death = new Death();
-        this.win = new Win();
-        this.endBattle = new EndBattle();
     }
 
     /**
@@ -217,7 +211,7 @@ public class GameController {
         turnoPlayer.jugador(player);
         turnoPlayer.attack(enemy, attackType);
         this.isEnemyKO(enemy);
-        this.finTurn();
+        this.playerWin();
     }
 
     public IPlayer randomPlayer(){
@@ -236,7 +230,7 @@ public class GameController {
         turnoEnemy.enemy(enemy);
         turnoEnemy.attack(jugador);
         this.isPlayerKO(jugador);
-        this.finTurn();
+        this.enemysWin();
     }
 
     public void isEnemyKO(IEnemy enemy){
@@ -266,8 +260,54 @@ public class GameController {
         this.finTurn();
     }
 
-    public void finBatalla(){
-        //hay que resetear todooooo
+    public void playerWin(){
+        if (enemysNumber == 0){
+            playersWin = true;
+            enemysWin = false;
+            this.finBatalla();
+        }
+        else {
+            this.finTurn();
+        }
     }
 
+    public void enemysWin(){
+        if (playersNumber == 0){
+            enemysWin = true;
+            playersWin = false;
+            this.finBatalla();
+        }
+        else{
+            this.finTurn();
+        }
+    }
+
+    public void Win(){
+        if(playersWin && !enemysWin){
+            win = true;
+        }
+        else {
+            win = false;
+        }
+    }
+
+    public boolean getWin(){
+        return win;
+    }
+
+    public void finBatalla(){
+        this.Win();
+        this.turnos.clearTurnos();
+        this.baul.clearBaul();
+        this.turnoPlayer.reset();
+        this.turnoEnemy.reset();
+        enemysNumber = 0;
+        playersNumber = 0;
+        enemysWin = false;
+        playersWin = false;
+    }
+
+    public void resetWin(){
+        win = false;
+    }
 }

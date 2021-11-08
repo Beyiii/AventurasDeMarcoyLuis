@@ -41,20 +41,6 @@ public interface IPlayer{
      */
     void reciveAttackSpiny(Spiny spiny);
 
-
-    /**
-     * Agrega items al inventario del personajes (jugador)
-     * @param item Item que será agregadoa l inventario del jugador.
-     */
-    void addItems(Items item);
-
-    /**
-     * Metodo para que el jugador pueda usar el item Star,
-     * el cual cambia el estado del personaje a invencible (no determinado por el momento).
-     * Si el jugador está derrotado no puede ocupar el item.
-     */
-    void useStar();
-
     /**
      * Metodo para que el jugador pueda usar el item Red Mushroom,
      * el cual hace que el peronaje pueda recuperar el 10% de sus puntos de vida (hp).

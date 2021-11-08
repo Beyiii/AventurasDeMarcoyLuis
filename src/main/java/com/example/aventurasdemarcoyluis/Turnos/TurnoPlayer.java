@@ -19,12 +19,6 @@ public class TurnoPlayer {
         this.player = player;
     }
 
-    public void reset(){
-        player = null;
-        enemy = null;
-        attackType = null;
-    }
-
     public void marcoAttack(){
         Marco marco =(Marco)player;
         AttackedByMarco enemigo = (AttackedByMarco)enemy;
@@ -35,8 +29,6 @@ public class TurnoPlayer {
         else{
             marco.saltoAttack(enemigo);
         }
-
-        reset();
     }
 
     public void luisAttack(){
@@ -50,8 +42,6 @@ public class TurnoPlayer {
         else{
             luis.saltoAttack(enemigo);
         }
-
-        reset();
     }
 
     public void attack(IEnemy enemy, AttackType attackType){
@@ -65,5 +55,11 @@ public class TurnoPlayer {
         else{
             luisAttack();
         }
+    }
+
+    public void reset(){
+        player = null;
+        enemy = null;
+        attackType = null;
     }
 }

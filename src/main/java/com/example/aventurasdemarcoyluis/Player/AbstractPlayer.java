@@ -18,7 +18,6 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
     private int fpMin = 0;
     private int fpMax;
     private PlayerType type;
-    private String estado = "vencible";
     private Hashtable<ItemsType, Items> inventario;
 
     /**
@@ -71,22 +70,6 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
         return fpMin;
     }
 
-    /**
-     * Obtiene el estado en el que se encuentra el personaje.
-     * Los estados son "Vencible" e "Invencible".
-     * @return el estado del personaje.
-     */
-    public String getEstado() {
-        return estado;
-    }
-
-    /**
-     * Cambia elo estado en que se encuentra el jugador.
-     * @param estado el nuevo estado.
-     */
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     /**
      * Obtiene el tipo de jugador (Marco o Luis).
@@ -180,5 +163,55 @@ public abstract class AbstractPlayer extends AbstractCharacter implements IPlaye
             this.setFp(newFp);
         }
         else{}
+    }
+
+    /**--------------------------------NUEVO-------------------------------------*/
+
+    /**
+     * Incrementa el HP en un 15% con respecto al HpMax
+     */
+    private void increaseHp(){
+        int hp = this.getHp() + (int)(15 * this.getHpMAX() / 100);
+        int newHP = isHpMax(hp);
+        this.setHp(newHP);
+    }
+
+    /**
+     *  Incrementa el FP en un 15% con respecto al FpMax
+     */
+    private void increaseFp(){
+        int fp = this.getFp() + (int)(15 * this.getFpMax() / 100);
+        int newFP = isFpMax(fp);
+        this.setFp(newFP);
+    }
+
+    /**
+     * Incrementa el ataque en un 15%
+     */
+    private void increaseAtk(){
+        int newAtk = this.getAtk() + (int)(15 * this.getAtk() / 100);
+        this.setAtk(newAtk);
+    }
+
+    /**
+     * Incrementa la defensa en un 15%
+     */
+    private void increaseDef(){
+        int newDef = this.getAtk() + (int)(15 * this.getDef() / 100);
+        this.setDef(newDef);
+    }
+
+
+    /**
+     * Aumenta el nivel en 1 e incrementa las estadisticas en un 15%
+     */
+    public void increaseLvl(){
+        int newLvl = this.getLvl() + 1;
+        setLvl(newLvl);
+
+        this.increaseAtk();
+        this.increaseDef();
+        this.increaseFp();
+        this.increaseHp();
     }
 }

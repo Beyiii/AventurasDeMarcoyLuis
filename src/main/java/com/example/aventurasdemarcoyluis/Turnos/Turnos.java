@@ -113,9 +113,10 @@ public class Turnos {
      */
     public void clearTurnos(){
         this.turnoList.clear();
+        this.turno = 0;
     }
 
     public void removeCharacter(ICharacter character){
-        turnoList.remove(character);
+        this.turnoList.remove(character);
     }
 }

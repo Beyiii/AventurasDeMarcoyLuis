@@ -1,5 +1,6 @@
 package TestMethods;
 
+import com.example.aventurasdemarcoyluis.Baul.Baul;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Items.*;
 import com.example.aventurasdemarcoyluis.Player.*;
@@ -16,6 +17,7 @@ public class TestFP {
     private Marco marco;
     private Luis luis;
     private HoneySyrup honeySyrup;
+    private Baul baul;
 
     @BeforeEach
     public void setUp() {
@@ -24,14 +26,16 @@ public class TestFP {
         marco = new Marco(10, 5, 1, 16, 4);
         luis = new Luis(15, 6, 1, 18, 6);
 
+        baul = new Baul();
         honeySyrup = new HoneySyrup();
+
+        baul.addItem(honeySyrup);
     }
 
     @Test
     public void marcoMaxFpTest(){
         int fpMarco = marco.getFp();
-        marco.addItems(honeySyrup);
-        marco.useHoneySyrup(); //Marco ya está en su máximo de su fp
+        marco.useHoneySyrup(baul); //Marco ya está en su máximo de su fp
         int noRestriction = fpMarco + 3; //Si no hubiera tope máximo de fp
         int fpResult = marco.getFp();
 
@@ -54,8 +58,7 @@ public class TestFP {
     @Test
     public void luisMaxFpTest(){
         int fpLuis = luis.getFp();
-        luis.addItems(honeySyrup);
-        luis.useHoneySyrup(); //Luis ya está en el maximo de su fp
+        luis.useHoneySyrup(baul); //Luis ya está en el maximo de su fp
         int noRestriction = fpLuis + 3;
         int fpResult = luis.getFp();
 

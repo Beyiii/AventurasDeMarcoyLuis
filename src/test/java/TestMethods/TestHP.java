@@ -1,8 +1,10 @@
 package TestMethods;
 
+import com.example.aventurasdemarcoyluis.Baul.Baul;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Items.*;
 import com.example.aventurasdemarcoyluis.Player.*;
+import javafx.scene.layout.Background;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -15,9 +17,9 @@ public class TestHP {
     private Spiny spiny;
     private Boo boo;
 
-
     private Marco marco;
     private Luis luis;
+    private Baul baul;
     private RedMushroom redMushroom;
 
     private int setSeed = 1014646950; //para que no falle el ataque con martillo
@@ -31,7 +33,10 @@ public class TestHP {
         marco = new Marco(1000,5,5,16,4);
         luis = new Luis(1000,6, 4, 18,6);
 
+        baul = new Baul();
         redMushroom = new RedMushroom();
+
+        baul.addItem(redMushroom);
 
         marco.setSeed(setSeed);
         luis.setSeed(setSeed);
@@ -44,8 +49,7 @@ public class TestHP {
     @Test
     public void marcoMaxHpTest(){
         int hpMarco = marco.getHp();
-        marco.addItems(redMushroom);
-        marco.useRedMushroom(); //Marco ya está en el maximo de su hp
+        marco.useRedMushroom(baul); //Marco ya está en el maximo de su hp
         int noRestriction = hpMarco + (int)(10 * 16/100 );
         int hpResult = marco.getHp();
 
@@ -67,8 +71,7 @@ public class TestHP {
     @Test
     public void luisMaxHpTest(){
         int hpLuis = luis.getHp();
-        luis.addItems(redMushroom);
-        luis.useRedMushroom(); //Luis ya está en el maximo de su hp
+        luis.useRedMushroom(baul); //Luis ya está en el maximo de su hp
         int noRestriction = hpLuis + (int)(10 * 18/100 );
         int hpResult = luis.getHp();
 

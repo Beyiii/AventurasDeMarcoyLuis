@@ -12,8 +12,8 @@ import com.example.aventurasdemarcoyluis.Items.*;
 public class Baul {
     private final Hashtable<ItemsType, Items> baul;
     private final Hashtable itemsCount;
-    private int redMushrooms;
-    private int honeySyrup;
+    private int redMushrooms = 0;
+    private int honeySyrup = 0;
 
     /**
      * Crea una hashtable donde estarán los items que se pueden utilizar.
@@ -21,8 +21,6 @@ public class Baul {
     public Baul(){
         this.baul =  new Hashtable<ItemsType, Items>();
         this.itemsCount = new Hashtable();
-        this.redMushrooms = 0;
-        this.honeySyrup = 0;
     }
 
     /**
@@ -87,5 +85,7 @@ public class Baul {
     public void clearBaul(){
         this.itemsCount.clear();
         this.baul.clear();
+        this.redMushrooms = 0;
+        this.honeySyrup = 0;
     }
 }

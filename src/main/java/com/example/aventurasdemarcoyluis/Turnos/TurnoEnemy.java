@@ -49,4 +49,9 @@ public class TurnoEnemy {
             booAttack();
         }
     }
+
+    public void reset(){
+        this.enemy = null;
+        this.player = null;
+    }
 }

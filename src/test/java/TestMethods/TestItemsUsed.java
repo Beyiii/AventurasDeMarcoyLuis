@@ -1,5 +1,6 @@
 package TestMethods;
 
+import com.example.aventurasdemarcoyluis.Baul.Baul;
 import com.example.aventurasdemarcoyluis.Enemy.*;
 import com.example.aventurasdemarcoyluis.Items.*;
 import com.example.aventurasdemarcoyluis.Player.*;
@@ -16,7 +17,7 @@ public class TestItemsUsed {
     private Marco marco;
     private Luis luis;
 
-    private Star star;
+    private Baul baul;
     private RedMushroom redMushroom;
     private HoneySyrup honeySyrup;
 
@@ -32,9 +33,12 @@ public class TestItemsUsed {
         goomba.attack(marco);
         goomba.attack(luis);
 
-        star = new Star();
         redMushroom = new RedMushroom();
         honeySyrup = new HoneySyrup();
+        baul = new Baul();
+
+        baul.addItem(redMushroom);
+        baul.addItem(honeySyrup);
 
         marco.setSeed(setSeed);
         luis.setSeed(setSeed);
@@ -42,23 +46,9 @@ public class TestItemsUsed {
     }
 
     @Test
-    public void marcoUseStarTest(){
-        String estadoMarco = marco.getEstado();
-        marco.addItems(star);
-        marco.useStar();
-        String estadoExpected = "invencible";
-        String estadoResult = marco.getEstado();
-
-        assertNotEquals(estadoMarco, estadoResult);
-        assertEquals(estadoExpected, estadoResult);
-
-    }
-
-    @Test
     public void marcoUseRedMushroomTest(){
         int hpMarco = marco.getHp();
-        marco.addItems(redMushroom);
-        marco.useRedMushroom();
+        marco.useRedMushroom(baul);
         int hpExpected = hpMarco + (int)(10 * 16/100);
         int hpResult = marco.getHp();
 
@@ -75,8 +65,7 @@ public class TestItemsUsed {
 
         int fpAfterAttack = marco.getFp();
 
-        marco.addItems(honeySyrup);
-        marco.useHoneySyrup();
+        marco.useHoneySyrup(baul);
 
         int fpExpected = fpAfterAttack + 3;
         int fpResult = marco.getFp();
@@ -87,22 +76,9 @@ public class TestItemsUsed {
     }
 
     @Test
-    public void luisUseStarTest(){
-        String estadoLuis = luis.getEstado();
-        luis.addItems(star);
-        luis.useStar();
-        String estadoExpected = "invencible";
-        String estadoResult = luis.getEstado();
-
-        assertNotEquals(estadoLuis, estadoResult);
-        assertEquals(estadoExpected, estadoResult);
-    }
-
-    @Test
     public void luisUseRedMushroomTest(){
         int hpLuis = luis.getHp();
-        luis.addItems(redMushroom);
-        luis.useRedMushroom();
+        luis.useRedMushroom(baul);
         int hpExpected = (int)(hpLuis + (10 * 18/100));
         int hpResult = luis.getHp();
 
@@ -119,8 +95,7 @@ public class TestItemsUsed {
 
         int fpAfterAttack = luis.getFp();
 
-        luis.addItems(honeySyrup);
-        luis.useHoneySyrup();
+        luis.useHoneySyrup(baul);
 
         int fpExpected = fpAfterAttack + 3;
         int fpResult = luis.getFp();
