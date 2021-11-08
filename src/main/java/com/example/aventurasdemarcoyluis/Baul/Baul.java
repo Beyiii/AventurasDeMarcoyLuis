@@ -3,6 +3,8 @@ package com.example.aventurasdemarcoyluis.Baul;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Objects;
+
 import com.example.aventurasdemarcoyluis.Items.*;
 
 /**
@@ -97,16 +99,6 @@ public class Baul {
     }
 
     /**
-     * Borra todos los items de la lista.
-     */
-    public void clearBaul(){
-        this.itemsCount.clear();
-        this.baul.clear();
-        this.redMushrooms = 0;
-        this.honeySyrup = 0;
-    }
-
-    /**
      * Se obtiene si hay o no red mushrooms.
      * @return false si no hay items red mushrooms y true si es que hay.
      */
@@ -120,5 +112,28 @@ public class Baul {
      */
     public boolean containHoneySyrup() {
         return baul.containsKey(ItemsType.HONEYSYRUP);
+    }
+
+    /**
+     * Borra todos los items de la lista.
+     */
+    public void clearBaul(){
+        this.itemsCount.clear();
+        this.baul.clear();
+        this.redMushrooms = 0;
+        this.honeySyrup = 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Baul baul1 = (Baul) o;
+        return redMushrooms == baul1.redMushrooms && honeySyrup == baul1.honeySyrup && baul.equals(baul1.baul) && itemsCount.equals(baul1.itemsCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baul, itemsCount, redMushrooms, honeySyrup);
     }
 }

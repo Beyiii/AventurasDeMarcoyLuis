@@ -119,4 +119,13 @@ public class Turnos {
     public void removeCharacter(ICharacter character){
         this.turnoList.remove(character);
     }
+
+    /**
+     * Obtiene si es que un personaje está o no en la lista-
+     * @param character personaje (jugador o enemigo)
+     * @return true si el personaje se encuentra en los turnos, false si no.
+     */
+    public boolean contain(ICharacter character){
+        return this.turnoList.contains(character);
+    }
 }

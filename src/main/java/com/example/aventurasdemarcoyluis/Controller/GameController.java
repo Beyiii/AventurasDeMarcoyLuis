@@ -57,13 +57,14 @@ public class GameController {
      */
     public Marco createMarco(int ATK, int DEF, int FP, int HP){
         Marco marco = new Marco(ATK, DEF, FP, HP, 1);
-        turnos.addTurnoIndice(0, marco);
+        turnos.addTurno(marco);
         playersNumber += 1;
         return marco;
     }
 
     /**
      * Crea al personaje principal Luis.
+     * Se agrega el personaje inmediatamente a la lista de turnos.
      * @param ATK ataque.
      * @param DEF defensa.
      * @param FP puntos para atacar.
@@ -72,13 +73,14 @@ public class GameController {
      */
     public Luis createLuis(int ATK, int DEF, int FP, int HP){
         Luis luis = new Luis(ATK, DEF, FP, HP, 1);
-        turnos.addTurnoIndice(1, luis);
+        turnos.addTurno(luis);
         playersNumber +=1;
         return luis;
     }
 
     /**
      * Crea al enemigo Goomba.
+     * Se agrega el personaje inmediatamente a la lista de turnos.
      * @param ATK ataque.
      * @param DEF defensa.
      * @param HP puntos de vida.
@@ -93,6 +95,7 @@ public class GameController {
 
     /**
      * Crea al enemigo Spiny.
+     * Se agrega el personaje inmediatamente a la lista de turnos.
      * @param ATK ataque.
      * @param DEF defensa.
      * @param HP puntos de vida.
@@ -107,6 +110,7 @@ public class GameController {
 
     /**
      * Crea al enemigo Boo.
+     * Se agrega el personaje inmediatamente a la lista de turnos.
      * @param ATK ataque.
      * @param DEF defensa.
      * @param HP puntos de vida.
@@ -117,6 +121,14 @@ public class GameController {
         turnos.addTurno(boo);
         enemysNumber += 1;
         return boo;
+    }
+
+    public Baul getBaul(){
+        return this.baul;
+    }
+
+    public Turnos getTurnos(){
+        return this.turnos;
     }
 
     /**
@@ -233,6 +245,13 @@ public class GameController {
         this.enemysWin();
     }
 
+    public void attackTurnEnemy(IEnemy enemy, IPlayer player){
+        turnoEnemy.enemy(enemy);
+        turnoEnemy.attack(player);
+        this.isPlayerKO(player);
+        this.enemysWin();
+    }
+
     public void isEnemyKO(IEnemy enemy){
         if (enemy.KO()){
             turnos.removeCharacter((ICharacter)enemy);
@@ -291,7 +310,7 @@ public class GameController {
         }
     }
 
-    public boolean getWin(){
+    public boolean isPlayersWin(){
         return win;
     }
 
