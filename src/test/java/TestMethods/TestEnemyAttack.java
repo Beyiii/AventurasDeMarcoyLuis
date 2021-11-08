@@ -35,8 +35,12 @@ public class TestEnemyAttack {
     public void goombaAttackMarcoTest(){
         int hpMarco = marco.getHp();
         goomba.attack(marco);
-        int hpExpected = (4 - (int)(0.75 * 2 * 8/5));
+        int hpExpected = 4 - (int)(0.75 * 2 * 8/5);
         int hpResult = marco.getHp();
+
+        System.out.println(hpMarco);
+        System.out.println(hpResult);
+        System.out.println(hpExpected);
 
         assertNotEquals(hpMarco, hpResult);
         assertEquals(hpExpected, hpResult);

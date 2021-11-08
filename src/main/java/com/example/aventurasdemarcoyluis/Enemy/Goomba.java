@@ -28,7 +28,6 @@ public class Goomba extends AbstractEnemy implements AttackedByLuis {
         if (this.KO() == false){
             player.reciveAttackGoomba(this);
         }
-        else{}
     }
 
     /**
