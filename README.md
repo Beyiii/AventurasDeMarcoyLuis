@@ -1,5 +1,65 @@
 # Aventuras de Marcos y Luis
 
+##Tarea2
+- ###Programa
+  Con lo programado en esta tarea se podrá realizar lo siguiente:
+  
+  &nbsp;
+  - Que los personajes y los enemigos se puedan atacar siguiendo las reglas establecidas,
+    es decir que, Luis no pueda atacar a Boo, Boo sólo ataca a Luis, Boo esquiva los martillos,
+    Spiny no le afecta el ataque salto, etc.
+
+  &nbsp;
+  - Que al subir de nivel un personaje principal, aumenta en un 15% el ataque, la defensa, 
+    los puntos de vida y los puntos de fp.
+
+  &nbsp;
+  - Que los personajes principales tengan un inventario en común llamado "baúl", 
+    donde se guardarán los items que ambos podrán usar. Al utilizar un item 
+    este se eliminará del baúl.
+
+  &nbsp;
+  - Se puede añadir y sacar items del baúl.
+
+  &nbsp;
+  - Ocupar un Game Controller para poder simular una batalla.
+
+  &nbsp;
+  - Con el Game Controller se podrá: crear a los personajes principales, crear a los enemigos,
+    crear los items, crear el baúl de los personajes principales, crear la lista de turnos,
+    que los jugadores puedan ocupar items del baúl, saber si los personajes principales ganaron
+    la batalla, obtener los personajes que estan en el turno actual y el del turno siguiente,
+    y más.
+  
+- ###Supuestos 
+  Los supuestos que se hicieron fueron los siguientes:
+
+  &nbsp;
+  - Al crear a los personajes con el Game Controller automáticamente se van posicionando en la 
+    lista de turnos.
+
+   &nbsp;
+  - Sólo se usarán Items tipo Red mushroom y Honey syrup.
+
+   &nbsp;
+  - El jugador puede elegir a que enemigo atacar, sin embargo si está usando a Luis no puede tener 
+    la opción de atacar a Boo.
+
+   &nbsp;
+  - El Baúl y la lista de Turnos se crean al momento de inicializar el Game Controller 
+    para que no haya más de un Baúl o más de una lista de Turnos.
+
+- ###Explicación de algunos metodos
+
+  - En la clase Game Controller Hay dos versiones de un método que sirve para que los enemigos 
+    puedan atacar a los jugadores. El usado en los test es el que permite elegir al jugador que
+    se desea atacar. En el otro, se elige al azar a quien se atacará.
+
+  &nbsp;
+  - Dentro del codigo existen metodos auxiliares que no se testean, pero que sirven para el correcto
+    funcionamiento de otros metodos que sí se testean.
+  
+
 ##Tarea1
 - ###Programa
   Con este programa se podrán realizar las siguientes acciones:
