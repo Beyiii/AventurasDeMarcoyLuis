@@ -123,7 +123,7 @@ public abstract class AbstractCharacter implements ICharacter{
      * Verifica si algún cálculo hecho con la variable hp es igual o menor a 0.
      * Esto permite que el hp del personaje no pueda ser inferior al hp minimo.
      * @param hp Hp del personaje luego de un ataque.
-     * @return El hp definitivo. hpMin si el hp que se calculó es menor a 0, y hp calculado si no.
+     * @return El hp definitivo. int isHpMin(int hp)hpMin si el hp que se calculó es menor a 0, y hp calculado si no.
      */
     public int isHpMin(int hp){
         if (hp <= this.getHpMin()){
