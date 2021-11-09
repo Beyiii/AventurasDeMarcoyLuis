@@ -123,10 +123,18 @@ public class GameController {
         return boo;
     }
 
+    /**
+     * Se obtiene el baul.
+     * @return baul.
+     */
     public Baul getBaul(){
         return this.baul;
     }
 
+    /**
+     * Se obtiene la lista de turnos.
+     * @return los turnos.
+     */
     public Turnos getTurnos(){
         return this.turnos;
     }
@@ -219,6 +227,12 @@ public class GameController {
         turnos.passTurno();
     }
 
+    /**
+     * Turno de ataque de los personajes principales.
+     * @param player jugador.
+     * @param enemy enemigo a atacar.
+     * @param attackType tipo de ataque.
+     */
     public void attackTurnPlayer(IPlayer player, IEnemy enemy, AttackType attackType){
         turnoPlayer.jugador(player);
         turnoPlayer.attack(enemy, attackType);
@@ -226,6 +240,10 @@ public class GameController {
         this.playerWin();
     }
 
+    /**
+     * Obtiene a Marco o Luis al azar.
+     * @return un personaje principal.
+     */
     public IPlayer randomPlayer(){
         int r = random.nextInt(2);
 
@@ -237,6 +255,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Turno de ataque de los enemigos.
+     * Se elige un jugador al azar para atacar.
+     * @param enemy enemigo que atacará.
+     */
     public void attackTurnEnemy(IEnemy enemy){
         IPlayer jugador = randomPlayer();
         turnoEnemy.enemy(enemy);
@@ -245,6 +268,11 @@ public class GameController {
         this.enemysWin();
     }
 
+    /**
+     * Turno de ataque de los enemigos.
+     * @param enemy enemigo que atacará.
+     * @param player jugador que será atacado.
+     */
     public void attackTurnEnemy(IEnemy enemy, IPlayer player){
         turnoEnemy.enemy(enemy);
         turnoEnemy.attack(player);
@@ -252,6 +280,10 @@ public class GameController {
         this.enemysWin();
     }
 
+    /**
+     * Si el enemigo está KO se remueve de los turnos y disminuye enemysNumber.
+     * @param enemy enemigo.
+     */
     public void isEnemyKO(IEnemy enemy){
         if (enemy.KO()){
             turnos.removeCharacter((ICharacter)enemy);
@@ -259,12 +291,22 @@ public class GameController {
         }
     }
 
+    /**
+     * Si el jugador está KO se remueve de los turnos y disminuye playersNumber.
+     * @param player marco o luis.
+     */
     public void isPlayerKO(IPlayer player){
         if (player.KO()){
             turnos.removeCharacter((ICharacter) player);
             playersNumber -= 1;
         }
     }
+
+    /**
+     * Turno jugador para usar item
+     * @param player jugador.
+     * @param tipo item a utilizar.
+     */
     public void itemTurn(IPlayer player, ItemsType tipo){
         if(tipo == ItemsType.REDMUSHROOM){
             this.useRedMushroom(player);
@@ -275,10 +317,16 @@ public class GameController {
         this.finTurn();
     }
 
+    /**
+     * Usado para pasar de turno.
+     */
     public void passTurn(){
         this.finTurn();
     }
 
+    /**
+     * Si el jugador ganó se finaliza la batalla, si no, se finaliza el turno.
+     */
     public void playerWin(){
         if (enemysNumber == 0){
             playersWin = true;
@@ -290,6 +338,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Si los enemigos ganaron se finaliza la batalla, si no, se finaliza el turno.
+     */
     public void enemysWin(){
         if (playersNumber == 0){
             enemysWin = true;
@@ -301,6 +352,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Cambia a la variable win dependiendo se si se ganó o no la batalla.
+     */
     public void Win(){
         if(playersWin && !enemysWin){
             win = true;
@@ -310,10 +364,17 @@ public class GameController {
         }
     }
 
+    /**
+     * Se obtiene si el jugador ganó o no la batalla.
+     * @return true si el jugador ganó, o false si no.
+     */
     public boolean isPlayersWin(){
         return win;
     }
 
+    /**
+     * Utiliza Win() y luego restaura las variables a su inicio.
+     */
     public void finBatalla(){
         this.Win();
         this.turnos.clearTurnos();
@@ -326,6 +387,9 @@ public class GameController {
         playersWin = false;
     }
 
+    /**
+     * Vuelve a la variable win a su estado inicial.
+     */
     public void resetWin(){
         win = false;
     }

@@ -116,6 +116,10 @@ public class Turnos {
         this.turno = 0;
     }
 
+    /**
+     * Se quita al personaje de los turnos.
+     * @param character personaje (enemigo o jugador).
+     */
     public void removeCharacter(ICharacter character){
         this.turnoList.remove(character);
     }

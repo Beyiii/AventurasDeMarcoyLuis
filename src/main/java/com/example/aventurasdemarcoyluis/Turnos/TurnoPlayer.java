@@ -13,12 +13,22 @@ public class TurnoPlayer {
     private IEnemy enemy = null;
     private AttackType attackType = null;
 
+    /**
+     * Crea las acciones que podrán realizar los personajes principales.
+     */
     public TurnoPlayer(){}
 
+    /**
+     * Cambia la variable jugador.
+     * @param player marco o luis.
+     */
     public void jugador(IPlayer player){
         this.player = player;
     }
 
+    /**
+     * Permite a marco atacar.
+     */
     public void marcoAttack(){
         Marco marco =(Marco)player;
         AttackedByMarco enemigo = (AttackedByMarco)enemy;
@@ -31,6 +41,9 @@ public class TurnoPlayer {
         }
     }
 
+    /**
+     * Permite a luis atacar.
+     */
     public void luisAttack(){
         Luis luis = (Luis)player;
         AttackedByLuis enemigo = (AttackedByLuis)enemy;
@@ -44,6 +57,11 @@ public class TurnoPlayer {
         }
     }
 
+    /**
+     * Permite que marco o luis puedan atacar.
+     * @param enemy enemigo al que se atacará.
+     * @param attackType ataque que se usará.
+     */
     public void attack(IEnemy enemy, AttackType attackType){
         this.enemy = enemy;
         this.attackType = attackType;
@@ -57,6 +75,9 @@ public class TurnoPlayer {
         }
     }
 
+    /**
+     * Restaura las variables a su inicio.
+     */
     public void reset(){
         player = null;
         enemy = null;

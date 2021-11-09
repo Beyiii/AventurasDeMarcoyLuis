@@ -12,23 +12,39 @@ public class TurnoEnemy {
     private IPlayer player = null;
 
 
+    /**
+     * Crea las acciones que puede hacer un enemigo en su turno.
+     */
     public TurnoEnemy(){
     }
 
+    /**
+     * Cambia a la variable enemy.
+     * @param enemy enemigo.
+     */
     public void enemy(IEnemy enemy){
         this.enemy = enemy;
     }
 
+    /**
+     * Permite que goomba ataque.
+     */
     public void goombaAttack(){
         Goomba goomba = (Goomba)enemy;
         goomba.attack(player);
     }
 
+    /**
+     * Permite que spiny ataque.
+     */
     public void spinyAttack(){
         Spiny spiny = (Spiny)enemy;
         spiny.attack(player);
     }
 
+    /**
+     * Permite que boo ataque.
+     */
     public void booAttack(){
         Boo boo = (Boo)enemy;
         if(player.getType() == PlayerType.LUIS){
@@ -36,6 +52,11 @@ public class TurnoEnemy {
         }
     }
 
+    /**
+     * Usado en el turno de un enemigo.
+     * Permite que cualquier enemigo pueda atacar.
+     * @param player jugador al que atacará el enemigo.
+     */
     public void attack(IPlayer player){
         this.player = player;
 
@@ -50,6 +71,9 @@ public class TurnoEnemy {
         }
     }
 
+    /**
+     * Restaura las variables a su inicio.
+     */
     public void reset(){
         this.enemy = null;
         this.player = null;

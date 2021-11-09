@@ -78,17 +78,17 @@ public class GetTurnsTest {
         gameController.finTurn(); //Pasa al siguiente turno.
 
         ICharacter actualTurn4= gameController.actualTurn(); //Spiny, pues se pasó al sgte. turno
-        assertEquals(spiny, actualTurn2);
+        assertEquals(spiny, actualTurn4);
 
         gameController.finTurn(); //Pasa al siguiente turno.
 
         ICharacter actualTurn5= gameController.actualTurn(); //Boo, pues se pasó al sgte. turno
-        assertEquals(boo, actualTurn2);
+        assertEquals(boo, actualTurn5);
 
         gameController.finTurn(); //Pasa al siguiente turno.
 
         ICharacter actualTurn6= gameController.actualTurn(); //Marco, pues se pasó al sgte. turno
-        assertEquals(marco, actualTurn2);
+        assertEquals(marco, actualTurn6);
     }
 
     @Test

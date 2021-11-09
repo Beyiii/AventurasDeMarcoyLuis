@@ -124,6 +124,11 @@ public class Baul {
         this.honeySyrup = 0;
     }
 
+    /**
+     * Sirve para saber si dos Baules son iguales o no.
+     * @param o baul
+     * @return true si son iguales, false si no
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -132,6 +137,10 @@ public class Baul {
         return redMushrooms == baul1.redMushrooms && honeySyrup == baul1.honeySyrup && baul.equals(baul1.baul) && itemsCount.equals(baul1.itemsCount);
     }
 
+    /**
+     * Usado para poder usar equals.
+     * @return hash code del objeto.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(baul, itemsCount, redMushrooms, honeySyrup);
